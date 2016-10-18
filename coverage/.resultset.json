@@ -1,43 +1,49 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/comment.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/models/comment.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/application_record.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/container.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/models/container.rb": [
         1,
         1,
         null
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/document.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/models/document.rb": [
         1,
         1,
         null
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/folder_permission.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/models/folder_permission.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/folder.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/models/folder.rb": [
         1,
         1,
         null
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/user.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/models/user.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         1,
         null
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/controllers/home_controller.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/controllers/home_controller.rb": [
         1,
         null,
         1,
@@ -46,38 +52,49 @@
         null,
         null
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/controllers/application_controller.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/channels/application_cable/channel.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/controllers/users_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/matt/Turing/3module/projects/filedrop/app/channels/application_cable/channel.rb": [
         0,
         0,
         0,
         0
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/channels/application_cable/connection.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/channels/application_cable/connection.rb": [
         0,
         0,
         0,
         0
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/helpers/application_helper.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/helpers/application_helper.rb": [
         0,
         0
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/jobs/application_job.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/jobs/application_job.rb": [
         0,
         0
       ],
-      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/mailers/application_mailer.rb": [
+      "/Users/matt/Turing/3module/projects/filedrop/app/mailers/application_mailer.rb": [
         0,
         0,
         0,
         0
       ]
     },
-    "timestamp": 1476832037
+    "timestamp": 1476834488
   }
 }
