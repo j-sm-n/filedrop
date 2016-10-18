@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018214217) do
+ActiveRecord::Schema.define(version: 20161018214350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20161018214217) do
     t.datetime "updated_at",  null: false
     t.index ["document_id"], name: "index_comments_on_document_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "containers", force: :cascade do |t|
+    t.integer  "folder_id"
+    t.integer  "containable_id"
+    t.string   "containable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["folder_id"], name: "index_containers_on_folder_id", using: :btree
   end
 
   create_table "documents", force: :cascade do |t|
@@ -64,6 +73,7 @@ ActiveRecord::Schema.define(version: 20161018214217) do
 
   add_foreign_key "comments", "documents"
   add_foreign_key "comments", "users"
+  add_foreign_key "containers", "folders"
   add_foreign_key "documents", "users"
   add_foreign_key "folder_permissions", "folders"
   add_foreign_key "folder_permissions", "users"
