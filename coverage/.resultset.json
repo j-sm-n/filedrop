@@ -1,0 +1,83 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/comment.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/container.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/document.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/folder_permission.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/folder.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/models/user.rb": [
+        1,
+        null
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/controllers/home_controller.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/helpers/application_helper.rb": [
+        0,
+        0
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/Users/soniagupta504/Turing/mod3/projects/filedrop/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1476832037
+  }
+}

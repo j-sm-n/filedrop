@@ -9,8 +9,8 @@ describe "Guest Landing Page" do
     # And I see a button to View All Public Files
     visit root_path
 
-    expect(page).to have_button("Create Account")
-    expect(page).to have_button("Login")
-    expect(page).to have_button("Public Files")
+    expect(page).to have_link("Create Account")
+    expect(page).to have_link("Login")
+    expect(page).to have_link("Public Files")
   end
 end
