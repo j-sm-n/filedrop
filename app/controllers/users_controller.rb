@@ -8,14 +8,16 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "Created an account for #{@user.name}. Welcome!"
-      redirect_to dashboard_path
+      redirect_to verify_path
     else
       flash.now[:error] = @user.errors.full_messages.join(". ")
       render new_user_path
     end
   end
 
-  
+  def show_verify
+
+  end
   def show
   end
 
