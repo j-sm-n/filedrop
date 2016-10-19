@@ -1,9 +1,10 @@
 FactoryGirl.define do
   factory :user do
     name "Users Name"
-    email "MyString"
+    email "example@example.com"
     role 1
     sms_number "555-867-5309"
-    password_digest "MyString"
+    password "MyString"
+    password_confirmation "MyString"
   end
 end

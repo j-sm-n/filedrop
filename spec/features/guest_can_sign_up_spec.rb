@@ -13,18 +13,19 @@ describe 'Guest signup' do
   visit root_path
   click_on 'Create Account'
 
-  expect(current_path).to eq(login_path)
+  expect(current_path).to eq(new_user_path)
 
-  fill_in :name, with: 'Emile'
-  fill_in :email, with: 'email@example.com'
-  fill_in :sms_number, with: "(303) 555-5555"
-  fill_in :password, with: 'password'
-  fill_in :password_confirmation, with: 'password'
+  fill_in "Name", with: 'Emile'
+  fill_in 'Email', with: 'email@example.com'
+  fill_in 'SMS Number', with: "(303) 555-5555"
+  fill_in 'Password', with: 'password'
+  fill_in 'Confirm Password', with: 'password'
   click_on 'Create Account'
 
-  # expect(page).to have_content('Confirmation Code:')
-  # fill_in
-  # click_on 
+  expect(current_path).to eq(verify_path)
+  expect(page).to have_content('Confirmation Code:')
+  fill_in 'Confirmation Code:', with: '1234'
+  click_button 'Submit'
 
   expect(current_path).to eq(dashboard_path)
   expect(page).to have_content('Logged in as Emile')
