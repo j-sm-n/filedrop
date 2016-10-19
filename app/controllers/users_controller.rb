@@ -18,6 +18,13 @@ class UsersController < ApplicationController
   def show_verify
     @authy_verification = AuthyVerification.new(current_user)
   end
+
+  def verify
+    
+
+    redirect_to dashboard_path
+  end
+
   def show
   end
 

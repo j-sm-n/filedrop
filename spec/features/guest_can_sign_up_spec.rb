@@ -23,9 +23,9 @@ describe 'Guest signup' do
   click_on 'Create Account'
 
   expect(current_path).to eq(verify_path)
-  expect(page).to have_content('Confirmation Code:')
-  fill_in 'Confirmation Code:', with: '1234'
-  click_button 'Submit'
+  expect(page).to have_content('Confirmation code:')
+  fill_in "authy_verification[token]", with: '1234'
+  click_on 'Verify'
 
   expect(current_path).to eq(dashboard_path)
   expect(page).to have_content('Logged in as Emile')
