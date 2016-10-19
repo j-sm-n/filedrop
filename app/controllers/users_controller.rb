@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show_verify
-
+    @authy_verification = AuthyVerification.new(current_user)
   end
   def show
   end
