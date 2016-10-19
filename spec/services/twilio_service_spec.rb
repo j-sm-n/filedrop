@@ -7,9 +7,7 @@ describe "Twilio Service" do
       service = TwilioService.new(user)
       response = service.generate_code
 
-      expect(response[:success]).to eq("true")
-      expect(response[:is_cellphone]).to eq("true")
-      # expect(response[:message]).to eq("")
+      expect(response[:success]).to eq(true)
     end
   end
 
@@ -17,11 +15,10 @@ describe "Twilio Service" do
     VCR.use_cassette("twilio_service#verify") do
       user = create :user, sms_number: "503-547-7488"
       service = TwilioService.new(user)
-      response = service.generate_code
-
-      expect(response[:success]).to eq("true")
-      expect(response[:is_cellphone]).to eq("true")
-      # expect(response[:message]).to eq("")
+byebug
+      response = service.verify(6312229)
+byebug
+      expect(response[:success]).to eq(true)
     end
   end
 end

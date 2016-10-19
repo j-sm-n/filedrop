@@ -6,5 +6,6 @@ FactoryGirl.define do
     sms_number "555-867-5309"
     password "MyString"
     password_confirmation "MyString"
+    authy_id '27517450'
   end
 end
