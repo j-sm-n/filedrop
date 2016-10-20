@@ -4,6 +4,18 @@ class TwilioService
   end
   #get authy user
 
+  def get_authy_user(user)
+    response = conn.post "/protected/json/users/new"
+    response = conn.post do |req|
+      req.url "/protected/json/users/new"
+      req.params['user[email]'] = user.email
+      req.params['user[country_code]'] = 1
+      req.params['user[cell_phone]'] = user.sms_number
+    end
+    require "pry"; binding.pry
+    parse(response)
+  end
+
   #generate code
   def generate_code
     response = conn.get "/protected/json/sms/#{@user.authy_id}"
@@ -26,7 +38,4 @@ class TwilioService
     def parse(response)
       JSON.parse(response.body, symbolize_names: true)
     end
-
-
-
 end

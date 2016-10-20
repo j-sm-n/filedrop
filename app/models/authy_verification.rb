@@ -15,6 +15,4 @@ class AuthyVerification
   def accept_token(token)
     @token = token
   end
-
-
 end
