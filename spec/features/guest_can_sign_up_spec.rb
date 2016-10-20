@@ -10,7 +10,7 @@ describe 'Guest signup' do
 
       fill_in "Name", with: 'Emile'
       fill_in 'Email', with: 'email@example.com'
-      fill_in 'SMS Number', with: "(303) 555-5555"
+      fill_in 'SMS Number', with: "3035555555"
       fill_in 'Password', with: 'password'
       fill_in 'Confirm Password', with: 'password'
       click_on 'Create Account'

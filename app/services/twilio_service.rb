@@ -9,7 +9,7 @@ class TwilioService
       req.url "/protected/json/users/new"
       req.params['user[email]'] = user.email
       req.params['user[country_code]'] = 1
-      req.params['user[cell_phone]'] = user.sms_number
+      req.params['user[cellphone]'] = user.sms_number
     end
     parse(response)
   end
