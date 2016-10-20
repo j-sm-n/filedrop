@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :check_authy_id, only: [:show_verify, :verify]
+
   def new
     @user = User.new
   end
@@ -23,8 +25,9 @@ class UsersController < ApplicationController
 
   def show_verify
     #this is the page the user gets to enter his/her token
+    service = TwilioService.new(current_user)
+    service.generate_code
     @authy_verification = AuthyVerification.new(current_user)
-
   end
 
   def verify
@@ -55,5 +58,11 @@ class UsersController < ApplicationController
 
     def token_params
       params.require(:authy_verification).permit(:token)
+    end
+
+    def check_authy_id
+      unless current_user && current_user.authy_id 
+        redirect_to new_user_path
+      end
     end
 end

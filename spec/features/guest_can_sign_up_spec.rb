@@ -49,4 +49,12 @@ describe 'Guest signup' do
       expect(page).to have_content('Code was not recognized')
     end
   end
+
+  it 'guest with no account asks for Authy code' do
+    VCR.use_cassette('guest_signup_no_authy_id') do
+      visit verify_path
+
+      expect(current_path).to eq(new_user_path)
+    end
+  end
 end

@@ -13,7 +13,6 @@ class TwilioService
     end
     parse(response)
   end
-
   #generate code
   def generate_code
     response = conn.get "/protected/json/sms/#{user.authy_id}"
