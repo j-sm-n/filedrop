@@ -1,0 +1,5 @@
+<%= form_for @authy_verification, url: users_verify_path do |f| %>
+  <%= f.label 'Confirmation code:' %>
+  <%= f.text_field :token %>
+  <%= f.submit "Verify" %>
+<% end %>

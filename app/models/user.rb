@@ -5,4 +5,8 @@ class User < ApplicationRecord
   validates :sms_number, presence: true
   validates :password, presence: true
   validates :password_confirmation, presence: true
+
+  def verify(token)
+    TwilioService.new(self).verify(token)
+  end
 end
