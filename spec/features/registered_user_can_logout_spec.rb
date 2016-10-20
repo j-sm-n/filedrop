@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "registered user" do
-  it "can login" do
+describe 'Registered user' do
+  it "can logout" do
     user = create :user, name: "Emile Garbanzo", email: "example@example.com", password: "password", password_confirmation: "password"
 
     visit root_path
@@ -11,8 +11,12 @@ describe "registered user" do
     fill_in "Email", with: "example@example.com"
     fill_in "Password", with: "password"
     click_button "Login"
-    expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content("Logged in as Emile Garbanzo")
-  end
 
+    expect(page).to_not have_content('Login')
+
+    click_link 'Logout'
+
+    expect(page).to have_content('Login')
+    expect(current_path).to eq(root_path)
+  end
 end
