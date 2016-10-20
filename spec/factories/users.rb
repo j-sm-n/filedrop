@@ -3,7 +3,7 @@ FactoryGirl.define do
     name "Users Name"
     email "example@example.com"
     role 1
-    sms_number "555-867-5309"
+    sms_number ENV['TEST_PHONE_NUMBER']
     password "MyString"
     password_confirmation "MyString"
     authy_id nil

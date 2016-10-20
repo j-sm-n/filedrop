@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :password, presence: true
   validates :password_confirmation, presence: true
 
-  def verify
-    TwilioService.verify(self)
+  def verify(token)
+    TwilioService.new(self).verify(token)
   end
 end

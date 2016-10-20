@@ -4,30 +4,30 @@ class TwilioService
   end
   #get authy user
 
-  def get_authy_user(user)
-    response = conn.post "/protected/json/users/new"
+  def get_authy_user
     response = conn.post do |req|
       req.url "/protected/json/users/new"
       req.params['user[email]'] = user.email
       req.params['user[country_code]'] = 1
       req.params['user[cell_phone]'] = user.sms_number
     end
-    require "pry"; binding.pry
     parse(response)
   end
 
   #generate code
   def generate_code
-    response = conn.get "/protected/json/sms/#{@user.authy_id}"
+    response = conn.get "/protected/json/sms/#{user.authy_id}"
     parse(response)
   end
   #verify token
   def verify(token)
-    response = conn.get "/protected/json/verify/#{token}/#{@user.authy_id}"
+    response = conn.get "/protected/json/verify/#{token}/#{user.authy_id}"
     parse(response)
   end
 
   private
+  attr_reader :user
+
     def conn
       Faraday.new(:url => "https://api.authy.com") do |faraday|
         faraday.adapter(Faraday.default_adapter)

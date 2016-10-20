@@ -6,10 +6,11 @@ describe "Twilio Service" do
     VCR.use_cassette("twilio_service#get_authy_user") do
       user = create :user, sms_number: "303-550-1694"
       service = TwilioService.new(user)
-      response = service.get_authy_user(user)
+      response = service.get_authy_user
       expect(response)
     end
   end
+
   it "sends a text message to user's number" do
     VCR.use_cassette("twilio_service#post") do
       user = create :user, sms_number: "303-550-1694"
