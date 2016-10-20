@@ -7,7 +7,6 @@ describe "Twilio Service" do
       user = create :user, sms_number: ENV['TEST_PHONE_NUMBER']
       service = TwilioService.new(user)
       response = service.get_authy_user
-byebug
       expect(response[:success]).to eq(true)
     end
   end
@@ -28,7 +27,7 @@ byebug
   xit "verifies the user's confirmation code" do
     VCR.use_cassette("twilio_service#verify") do
       user = create(
-        :user, 
+        :user,
         authy_id: ENV['AUTHY_ID']
       )
       service = TwilioService.new(user)

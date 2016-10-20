@@ -30,8 +30,13 @@ class UsersController < ApplicationController
   def verify
     #the form from show verify button directs to this method
     #we get the token in the params here
-    current_user.verify(token_params[:token])
-    redirect_to dashboard_path
+    response = current_user.verify(token_params[:token])
+    if response[:success]
+      redirect_to dashboard_path
+    else
+      flash[:error] = "Code was not recognized"
+      redirect_to verify_path
+    end
   end
 
   def show
