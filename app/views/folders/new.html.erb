@@ -1,0 +1,11 @@
+<%= form_for ([current_user, @folder]) do |f| %>
+  <%= f.label 'Folder name' %>
+  <%= f.text_field :name %>
+  <%= f.label 'Parent Folder' %>
+  <%= f.collection_select(:id, Folder.all, :id, :name) %>
+  <%= f.radio_button :permission_level, 'public', checked: true %>
+  <%= label :permission_level_public, 'Public' %>
+  <%= f.radio_button :permission_level, 'private'%>
+  <%= label :permission_level_private, 'Private' %>
+  <%= f.submit %>
+<% end %>

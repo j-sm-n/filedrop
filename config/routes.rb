@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :documents, only:[:index]
-  resources :users, only:[:new, :create]
+  resources :users, only:[:new, :create] do
+    resources :folders, only:[:new, :create]
+  end
 
   get '/users/verify', to: 'users#show_verify', as: 'verify'
   post 'users/verify'
