@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:success] = 'Your account has been updated'
-      redirect_to dashboard_path
+      redirect_to user_path(@user)
     else
       flash.now[:error] = 'Please make sure fields are updated correctly'
       render :edit
