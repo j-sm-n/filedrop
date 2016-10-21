@@ -10,7 +10,7 @@
 
   <body>
     <% if current_user %>
-      <%= link_to 'Logout', logout_path %>
+      <%= link_to 'Logout', logout_path, method: :delete %>
     <% else %>
       <%= link_to 'Login', login_path %>
     <% end %>
@@ -18,7 +18,7 @@
     <% flash.each do |type, msg| %>
       <%= content_tag(:div, sanitize(msg), class: "alert alert-#{type}") %>
     <% end %>
-    
+
     <%= yield %>
   </body>
 </html>

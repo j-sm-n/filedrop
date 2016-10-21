@@ -23,6 +23,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
   def show_verify
     #this is the page the user gets to enter his/her token
     service = TwilioService.new(current_user)
@@ -61,7 +65,7 @@ class UsersController < ApplicationController
     end
 
     def check_authy_id
-      unless current_user && current_user.authy_id 
+      unless current_user && current_user.authy_id
         redirect_to new_user_path
       end
     end

@@ -1,1 +1,14 @@
 Logged in as <%= current_user.name %>
+
+<p>Profile Info:</p>
+<li>
+  <ul>
+    <%= current_user.name %>
+    <%= current_user.email %>
+    <%= current_user.sms_number %>
+  </ul>
+</li>
+
+<div class="edit_user_link">
+  <%= link_to "Edit Profile", edit_user_path(current_user) %>
+</div>
