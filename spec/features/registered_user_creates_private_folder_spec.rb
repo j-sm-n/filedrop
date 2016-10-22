@@ -16,7 +16,7 @@ describe 'Registered User' do
     # And I choose the parent folder
     select folder.name, from: 'folder[id]'
     # and I choose the permission level "Private"
-    find(:css, '#folder_permission_level_private').set(true)
+    find(:css, '#folder_permission_level_restricted').set(true)
     # and I click Create Folder
     click_on "Create Folder"
     # I should see a message state the folder was created
@@ -25,6 +25,6 @@ describe 'Registered User' do
     final_count = Folder.all.count
     expect(final_count - inital_count).to eq(1)
     #and the permission level of the new folder is private
-    expect(Folder.last.permission_level).to eq(1)
+    expect(Folder.last.restricted?).to be(true)
   end
 end
