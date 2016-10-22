@@ -3,6 +3,6 @@ FactoryGirl.define do
     filename "MyString"
     content_type "MyString"
     data ""
-    user nil
+    user
   end
 end
