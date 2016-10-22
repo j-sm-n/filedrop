@@ -29,12 +29,12 @@ describe 'Registered User' do
     # And I fill in the folder name
     fill_in 'Folder name', with: 'Artwork'
     # And I choose the parent folder
-    select folder.name, from: 'folder[user_id]'
+    select folder.name, from: 'folder[id]'
     # And I choose the folder's permission level
     find(:css, '#folder_permission_level_public').set(true)
     # And I click submit
     click_on "Create Folder"
-    byebug
+    save_and_open_page
     #I should see a message stating the folder was created
     expect(page).to have_content('Artwork was added')
     # And I should see the folder on this page
