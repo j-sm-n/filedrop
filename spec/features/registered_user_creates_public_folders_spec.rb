@@ -43,5 +43,6 @@ describe 'Registered User' do
     # And the users count of folders should increase by one.
     expect(user.folders.count).to eq(2)
     expect(folder.subfolders.count).to eq(1)
+    expect(Folder.last.restricted?).to be(false)
   end
 end
