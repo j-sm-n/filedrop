@@ -9,3 +9,7 @@
   <%= f.text_field :password_confirmation %>
   <%= f.submit 'Update Profile' %>
 <% end %>
+
+<div class="back_to_profile">
+  <%= link_to "<< Back To Profile", user_path(@user) %>
+</div>
