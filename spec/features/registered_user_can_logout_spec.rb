@@ -6,7 +6,9 @@ describe 'Registered user' do
 
     visit root_path
 
-    first('a').click
+    within('.navbar-right') do
+      click_on 'Login'
+    end
     expect(current_path).to eq(login_path)
     fill_in "Email", with: "example@example.com"
     fill_in "Password", with: "password"
