@@ -20,9 +20,11 @@ describe 'Registered User' do
     # and I click Create Folder
     click_on "Create Folder"
     # I should see a message state the folder was created
-    expect(page).to have_content("Artwork was added")
+    expect(page).to have_content("Students was added to Turing")
     # and the number of folders should increase by one.
     final_count = Folder.all.count
     expect(final_count - inital_count).to eq(1)
+    #and the permission level of the new folder is private
+    expect(Folder.last.permission_level).to eq(1)
   end
 end
