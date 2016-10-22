@@ -36,7 +36,7 @@ describe 'Registered User' do
     click_on "Create Folder"
     byebug
     #I should see a message stating the folder was created
-    expect(page).to have_content('Artwork added to Valuables')
+    expect(page).to have_content('Artwork was added')
     # And I should see the folder on this page
     #within?? do
     expect(page).to have_content('Artwork')

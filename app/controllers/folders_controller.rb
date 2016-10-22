@@ -6,9 +6,10 @@ class FoldersController < ApplicationController
   def create
     @folder = current_user.folders.new(folder_params)
     if @folder.save
-      flash[:success] = "#{@folder.name} was added to #{@folder.parent}"
-    else
+      flash[:success] = "#{@folder.name} was added"
       redirect_to dashboard_path
+    else
+      render :new
     end
   end
 
@@ -16,5 +17,5 @@ class FoldersController < ApplicationController
     def folder_params
       params.require(:folder).permit(:name)
     end
-      
+
 end
