@@ -34,7 +34,6 @@ describe 'Registered User' do
     find(:css, '#folder_permission_level_public').set(true)
     # And I click submit
     click_on "Create Folder"
-    save_and_open_page
     #I should see a message stating the folder was created
     expect(page).to have_content('Artwork was added')
     # And I should see the folder on this page
