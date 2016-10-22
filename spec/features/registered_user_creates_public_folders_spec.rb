@@ -12,8 +12,8 @@ describe 'Registered User' do
     # I should see a form to create a Folder.
     expect(page).to have_content('Folder name')
     expect(page).to have_content('Parent folder')
-    expect(page).to have_content('Public')
-    expect(page).to have_content('Private')
+    expect(page).to have_content('Unrestricted')
+    expect(page).to have_content('Restricted')
   end
 
   it 'can create a public folder' do
@@ -31,7 +31,7 @@ describe 'Registered User' do
     # And I choose the parent folder
     select folder.name, from: 'folder[id]'
     # And I choose the folder's permission level
-    find(:css, '#folder_permission_level_public').set(true)
+    find(:css, '#folder_permission_level_unrestricted').set(true)
     # And I click submit
     click_on "Create Folder"
     #I should see a message stating the folder was created
@@ -43,5 +43,6 @@ describe 'Registered User' do
     # And the users count of folders should increase by one.
     expect(user.folders.count).to eq(2)
     expect(folder.subfolders.count).to eq(1)
+    expect(Folder.last.restricted?).to be(false)
   end
 end

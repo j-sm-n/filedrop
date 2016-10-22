@@ -6,12 +6,7 @@ class FoldersController < ApplicationController
   def create
     @folder = current_user.folders.new(folder_params)
     if @folder.save
-      if parent_folder[:id]
-        Folder.find(parent_folder[:id]).subfolders << @folder
-        flash[:success] = "#{@folder.name} was added to #{Folder.find(parent_folder[:id]).name}"
-      else
-        flash[:success] = "#{@folder.name} was added"
-      end
+      flash[:success] = @folder.set_parent(parent_folder[:id])
       redirect_to dashboard_path
     else
       flash.now[:error] = @folder.errors.full_messages.join('. ')
@@ -21,7 +16,7 @@ class FoldersController < ApplicationController
 
   private
     def folder_params
-      params.require(:folder).permit(:name)
+      params.require(:folder).permit(:name, :permission_level)
     end
 
     def parent_folder
