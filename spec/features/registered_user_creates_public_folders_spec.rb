@@ -19,12 +19,16 @@ describe 'Registered User' do
   it 'can create a public folder' do
     #As a registered users
     user = create :user
-    folder = user.folders.create(attributes_for :folder)
+    folder = Folder.new(name: "My Folder", user_id: user.id, permission_level: 0)
+    container = Container.create(folder_id: folder.id, containable_id: folder.id, containable_type: "folder")
+    folder.save
+
     login(user)
     #When I click on Create Folder
     click_on 'Create Folder'
+    save_and_open_page
+    byebug
     # And I fill in the folder name
-  
     fill_in 'Folder name', with: 'Artwork'
     # And I choose the parent folder
     select folder.id, from: 'id'

@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :container do
-    folder nil
-    containable_id nil
-    containable_type "MyString"
+    folder
+    after_create do |container|
+      Factory(:folder, :container => container)     
+    end
   end
 end
