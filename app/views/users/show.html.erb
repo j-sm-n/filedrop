@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 Logged in as <%= current_user.name %>
 
 <%= link_to "Create Folder", new_user_folder_path(current_user.id) %>
 
+=======
+>>>>>>> development
 <p>Profile Info:</p>
 <li>
   <ul>
@@ -13,4 +16,8 @@ Logged in as <%= current_user.name %>
 
 <div class="edit_user_link">
   <%= link_to "Edit Profile", edit_user_path(current_user) %>
+</div>
+
+<div class="back_to_profile">
+  <%= link_to "<< Back To Dashboard", dashboard_path %>
 </div>
