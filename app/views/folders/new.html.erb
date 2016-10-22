@@ -2,7 +2,7 @@
   <%= f.label :name, 'Folder name' %>
   <%= f.text_field :name %>
   <%= f.label 'Parent Folder' %>
-  <%= f.collection_select(:id, Folder.all, :id, :name, {:prompt => false}) %>
+  <%= f.collection_select(:user_id, current_user.folders, :id, :name, prompt: false) %>
   <%= f.radio_button :permission_level, 'public', checked: true %>
   <%= label :permission_level_public, 'Public' %>
   <%= f.radio_button :permission_level, 'private'%>

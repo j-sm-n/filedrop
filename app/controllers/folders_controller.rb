@@ -4,6 +4,15 @@ class FoldersController < ApplicationController
   end
 
   def create
-    current_user.folders.new(folder_params)
+    @folder = current_user.folders.new(folder_params)
+    if @folder.save
+      flash[:success] = @folder.name was added to @folder.
+    else
+
+    end
+  end
+
+  def folder_params
+    params.require(:folder).permit(:name)
   end
 end
