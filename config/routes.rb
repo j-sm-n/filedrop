@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :folders, only:[:new, :create]
   end
 
+  resources :folders, only:[:index, :show]
+
   get '/dashboard', to: 'dashboard#index'
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"

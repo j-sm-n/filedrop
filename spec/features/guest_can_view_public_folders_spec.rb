@@ -9,6 +9,8 @@ describe "Guest" do
 
     click_on "Public Files"
 
-    expect(page).to have_content
+    expect(current_path).to eq(folders_path)
+    expect(page).to have_content('Turing')
+    expect(page).to_not have_content('Students')
   end
 end
