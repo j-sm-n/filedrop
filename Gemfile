@@ -27,6 +27,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'faraday'
 
+group :development, :production do
+  gem 'capistrano', '~> 3.6'
+  gem 'capistrano-bundler', '~> 1.2'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rbenv', github: "capistrano/rbenv"
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -43,7 +50,6 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'capistrano-rails'
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
 end
