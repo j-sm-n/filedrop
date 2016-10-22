@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'faraday'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 
 group :development, :production do
   gem 'capistrano', '~> 3.6'
@@ -46,6 +48,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'mocha'
+  gem 'turbolinks'
 end
 
 group :development do

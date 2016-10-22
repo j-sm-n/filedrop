@@ -5,6 +5,7 @@ describe 'Registered user' do
     user = create :user
     ApplicationController.any_instance.stubs(:current_user).returns(user)
     visit dashboard_path
+    click_on "View Profile Info"
 
     expect(page).to have_content("example@example.com")
 
@@ -14,7 +15,7 @@ describe 'Registered user' do
     fill_in 'Email', with: 'NewEmail@example.com'
     click_on "Update Profile"
 
-    expect(current_path).to eq(dashboard_path)
+    expect(current_path).to eq(user_path(user))
     expect(page).to have_content('NewEmail@example.com')
     expect(page).to have_content('Your account has been updated')
 
@@ -24,6 +25,7 @@ describe 'Registered user' do
     user = create :user
     ApplicationController.any_instance.stubs(:current_user).returns(user)
     visit dashboard_path
+    click_on "View Profile Info"
 
     click_on "Edit Profile"
     expect(current_path).to eq(edit_user_path(user))
@@ -33,7 +35,7 @@ describe 'Registered user' do
     fill_in 'Confirm Password',  with: 'NewPassword'
     click_on "Update Profile"
 
-    expect(current_path).to eq(dashboard_path)
+    expect(current_path).to eq(user_path(user))
     expect(page).to have_content('Your account has been updated')
     expect(user_password).to_not eq(User.last.password_digest)
   end
@@ -42,6 +44,7 @@ describe 'Registered user' do
     user = create :user
     ApplicationController.any_instance.stubs(:current_user).returns(user)
     visit dashboard_path
+    click_on "View Profile Info"
 
     expect(page).to have_content("Users Name")
 
@@ -51,7 +54,7 @@ describe 'Registered user' do
     fill_in 'Name', with: "New Name"
     click_on "Update Profile"
 
-    expect(current_path).to eq(dashboard_path)
+    expect(current_path).to eq(user_path(user))
     expect(page).to have_content('New Name')
     expect(page).to have_content('Your account has been updated')
   end
