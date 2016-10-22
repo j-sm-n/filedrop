@@ -7,12 +7,13 @@ Rails.application.routes.draw do
   post 'users/resent'
 
   resources :documents, only:[:index]
-  resources :users, only:[:new, :create, :edit, :update, :show]
+  resources :users, only:[:new, :create, :edit, :update, :show] do
+    resources :folders, only:[:new, :create]
+  end
 
   get '/dashboard', to: 'dashboard#index'
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete '/logout', to: 'sessions#destroy'
-
 
 end
