@@ -15,7 +15,7 @@ class Users::FoldersController < ApplicationController
   end
 
   def index
-
+    @folders = User.find(params[:user_id]).folders.unrestricted_folders
   end
 
   private
