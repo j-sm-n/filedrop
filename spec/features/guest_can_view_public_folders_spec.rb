@@ -2,8 +2,9 @@ require 'rails_helper'
 
 describe "Guest" do
   it "can view public folders" do
-    folder = create :folder, name: 'Turing', permission_level: 1
-    folder_2 = create :folder, name: 'Students', permission_level: 0
+    user = create :user
+    folder = create :folder, user_id: user.id, name: 'Turing', permission_level: 1
+    folder_2 = create :folder, user_id: user.id, name: 'Students', permission_level: 0
 
     visit root_path
 

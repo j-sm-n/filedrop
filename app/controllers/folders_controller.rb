@@ -14,6 +14,10 @@ class FoldersController < ApplicationController
     end
   end
 
+  def index
+    @folders = Folder.unrestricted_folders
+  end
+
   private
     def folder_params
       params.require(:folder).permit(:name, :permission_level)
