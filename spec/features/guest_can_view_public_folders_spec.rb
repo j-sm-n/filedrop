@@ -14,4 +14,16 @@ describe "Guest" do
     expect(page).to have_content('Turing')
     expect(page).to_not have_content('Students')
   end
+
+  it 'can view public folders that belong to a user' do
+    user = create :user
+    folder = create :folder, user_id: user.id, name: 'Turing', permission_level: 1
+    folder_2 = create :folder, user_id: user.id, name: 'Students', permission_level: 0
+
+    visit user_folders_path(user)
+
+    expect(current_path).to eq(user_folders_path(user))
+    expect(page).to have_content('Turing')
+    expect(page).to_not have_content('Students')
+  end
 end
