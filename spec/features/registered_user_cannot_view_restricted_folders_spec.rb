@@ -24,14 +24,15 @@ describe 'Regisitered User' do
       login(user)
       another_user = create :user, email: 'test@example.com'
       # When I visit a folder path that belongs to another user
-      folder = create :folder, name: 'Anything', user: another_user, permission_level: 'restricted'
-      file = create :document
+      folder = create :folder, name: 'Turing', user: another_user, permission_level: 'restricted'
+      file = create :document, user: another_user, filename: 'students.csv'
       folder.documents << file
       # And I do have access to that folder
       folder.authorized_users << user
       visit folder_path(folder)
       # I should see it's content
-      expect(page).to have_content 'Anthing'
+      expect(page).to have_content 'Turing'
+      expect(page).to have_content 'students.csv'
       # And I should see options to manage that folder
       # and I should see options to add content
       expect(page).to have_content 'Upload File'
