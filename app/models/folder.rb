@@ -1,5 +1,6 @@
 class Folder < ApplicationRecord
   belongs_to :user
+  scope :unrestricted_folders, -> { where(permission_level: 'unrestricted') }
   # belongs_to :container, foreign_key: :containable, optional: true
   # belongs_to :folder, optional: true
   has_many :containers
