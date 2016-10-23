@@ -9,10 +9,12 @@ describe 'Folder' do
 
       #when a folder's owner is deactivated
       inactive_user = create :user, email: 'old@example.com', status: :deactivated
-      folder = create :folder, user: inactive_user, name: 'Antiques'
+      folder = create :folder, user: inactive_user, name: 'Antiques', permission_level: :unrestricted
       #and I visit that folder
       visit folder_path(folder.id)
       #I should get a 404
+      byebug
+save_and_open_page
       expect(page.status_code).to eq(404)
       #and I should not see that folder's content.
       expect(page).to_not have_content('Antiques')
