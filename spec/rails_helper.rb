@@ -70,3 +70,17 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+
+def login(user)
+  visit root_path
+
+  within('.navbar-right') do
+    click_on 'Login'
+  end
+
+  expect(current_path).to eq(login_path)
+  fill_in "Email", with: user.email
+  fill_in "Password", with: user.password
+  click_button "Login"
+end

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :folder do
-    name "MyString"
-    user nil
+    name "Valuables"
+    user
   end
 end

@@ -1,5 +1,8 @@
 Logged in as <%= current_user.name %>
 
+<%= link_to "Create Folder", new_user_folder_path(current_user.id) %>
+<%= link_to "Upload File", new_user_document_path(current_user.id) %>
+
 <div class="view_user_profile">
   <%= link_to "View Profile Info", user_path(current_user) %>
 </div>

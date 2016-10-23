@@ -6,7 +6,6 @@ describe "registered user" do
 
     visit root_path
 
-    # save_and_open_page
     within('.navbar-right') do
       click_on 'Login'
     end
