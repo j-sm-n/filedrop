@@ -26,6 +26,4 @@ class Users::FoldersController < ApplicationController
     def parent_folder
       params.require(:folder).permit(:id)
     end
-
-
 end

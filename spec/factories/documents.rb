@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :document do
     filename "MyString"
     content_type "MyString"
-    data ""
+    url "screenshot.png"
     user
   end
 end
