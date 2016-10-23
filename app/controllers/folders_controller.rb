@@ -4,4 +4,7 @@ class FoldersController < ApplicationController
     @folders = Folder.unrestricted_folders
   end
 
+  def show
+
+  end
 end
