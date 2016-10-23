@@ -8,10 +8,11 @@ describe 'Regisitered User' do
       login(user)
       another_user = create :user, email: 'test@example.com'
       # When I visit a folder path that belongs to another user
-      folder = create :folder, user: another_user, permission_level: 'restricted'
-      visit 
       # And I do not have access to that folder
+      folder = create :folder, user: another_user, permission_level: 'restricted'
+      visit folder_path(folder)
       # I should see a 404 message
+      expect(response.status).to eq(404)
     end
   end
 
