@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   post 'users/verify'
   post 'users/resent'
 
+  namespace :admin do
+    get '/dashboard', to: 'dashboard#index'
+    resources :users, only:[:index, :update]
+  end
+
   resources :documents, only:[:index]
   resources :users, only:[:new, :create, :edit, :update, :show] do
     scope module: 'users' do
