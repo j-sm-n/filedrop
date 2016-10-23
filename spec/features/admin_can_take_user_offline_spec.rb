@@ -8,14 +8,14 @@ describe 'Logged in Admin' do
     # -As a platform admin who is logged in
     login(admin)
     # -When I click on dashboard
-    visit dashboard_path
+    visit admin_dashboard_path
     # -Then I should be on admin/dashboard
-    expect(current_path).to be(admin_dashboard_path)
+    expect(current_path).to eq(admin_dashboard_path)
     # -And I should see a link to view all users
     click_on 'All Users'
     # -And when I click "View All Users"
     # -Then I should be on /all_users
-    expect(current_path).to eq('/admin/all_users')
+    expect(current_path).to eq('/admin/users')
     # -Then I should see a list of all users with a description of their status and with links to -activate or deactivate each user
     expect(page).to have_content('Chad')
     expect(page).to have_content('Active')
@@ -41,7 +41,7 @@ describe 'Logged in Admin' do
 
     # -Then I should be sent back to /all_users
     # -And I should see a list of all users with their status updated
-    expect(current_path).to eq('/admin/all_users')
+    expect(current_path).to eq('/admin/users')
     expect(page).to have_content('Chad')
   end
 end
