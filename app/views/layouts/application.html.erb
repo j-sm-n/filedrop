@@ -8,7 +8,14 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
+  <%= render partial: 'layouts/navbar' %>
+
   <body>
+
+    <% flash.each do |type, msg| %>
+      <%= content_tag(:div, sanitize(msg), class: "alert alert-#{type}") %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

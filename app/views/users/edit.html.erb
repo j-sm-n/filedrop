@@ -1,0 +1,15 @@
+<%= form_for @user do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <%= f.label :password_confirmation, 'Confirm Password' %>
+  <%= f.text_field :password_confirmation %>
+  <%= f.submit 'Update Profile' %>
+<% end %>
+
+<div class="back_to_profile">
+  <%= link_to "<< Back To Profile", user_path(@user) %>
+</div>

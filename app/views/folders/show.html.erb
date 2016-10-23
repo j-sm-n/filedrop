@@ -1,0 +1,6 @@
+<%= @folder.name %>
+<% @folder.documents.each do |document| %>
+  <%= document.filename %>
+<% end %>
+
+<%= link_to "Upload File", root_path %> <!-- Need to update the correct path -->
