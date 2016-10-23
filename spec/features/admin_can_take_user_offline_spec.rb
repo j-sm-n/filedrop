@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'Logged in Admin' do
-  it 'can take user offline' do
+describe 'Admin dashboard' do
+  it 'gives admin functionality to take user offline' do
     user = create :user, name: 'Chad', email: 'chad@example.com'
     admin = create :user, role: 1
 
@@ -43,5 +43,20 @@ describe 'Logged in Admin' do
     # -And I should see a list of all users with their status updated
     expect(current_path).to eq('/admin/users')
     expect(page).to have_content('Chad')
+  end
+
+  it 'blocks access from guest and registered users' do
+    # As a guest
+    # When I visit admin path
+    # I should see 404s
+    visit admin_dashboard_path
+
+    expect(page.status_code).to eq(404)
+
+
+    visit admin_users_path
+
+    expect(page.status_code).to eq(404)
+
   end
 end
