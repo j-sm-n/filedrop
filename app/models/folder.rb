@@ -7,6 +7,11 @@ class Folder < ApplicationRecord
   has_many :subfolders, through: :containers, source: :containable, source_type: 'Folder'
   has_many :documents, through: :containers, source: :containable, source_type: 'Document'
 
+  alias_attribute :authorized_users, :users
+  has_many :folder_permissions
+  has_many :users, through: :folder_permissions
+
+
   enum permission_level: %w(restricted unrestricted)
 
   def set_parent(parent_folder_id)
