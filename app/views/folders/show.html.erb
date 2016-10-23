@@ -1,0 +1,9 @@
+<div class="container">
+  <h1><%= @folder.name %></h1>
+
+  <ul>
+    <% @documents.each do |document| %>
+      <%= link_to document.filename, document.url %><br>
+    <% end %>
+  </ul>
+</div>
