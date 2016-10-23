@@ -13,8 +13,6 @@ describe 'Folder' do
       #and I visit that folder
       visit folder_path(folder.id)
       #I should get a 404
-      byebug
-save_and_open_page
       expect(page.status_code).to eq(404)
       #and I should not see that folder's content.
       expect(page).to_not have_content('Antiques')
