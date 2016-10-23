@@ -6,9 +6,8 @@ Rails.application.routes.draw do
   post 'users/verify'
   post 'users/resent'
 
-  resources :documents, only:[:index]
   resources :users, only:[:new, :create, :edit, :update, :show] do
-    resources :documents, only:[:inde]
+    resources :documents
     scope module: 'users' do
       resources :folders, only:[:new, :create, :index]
     end

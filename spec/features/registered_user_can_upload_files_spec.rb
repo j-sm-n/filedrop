@@ -14,7 +14,7 @@ describe "Registered User" do
     # I click on "Upload File,"
     click_on "Upload File"
     # And I should see a form to upload a single file,
-    expect(current_path).to eq(new_user_document_path)
+    expect(current_path).to eq(new_user_document_path(user.id))
     # And I should see "No file chosen" next to a button called "Choose File"
     expect(page).to have_content("No file chosen")
     # And I select a parent folder from a dropdown of existing folders that I own,
