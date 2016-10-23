@@ -16,11 +16,11 @@ describe "Registered User" do
     # And I should see a form to upload a single file,
     expect(current_path).to eq(new_user_document_path(user.id))
     # And I should see "No file chosen" next to a button called "Choose File"
-    expect(page).to have_content("No file chosen")
+    # expect(page).to have_content("No file chosen")
     # And I select a parent folder from a dropdown of existing folders that I own,
-    select folder.name, from: "folder[id]"
+    select folder.name, from: "document[id]"
     # And I click the button "Choose File,"
-    click_button "Choose File"
+    click_on "document_file"
     # And I select a file from my local machine,
     attach_file "screenshot", "/Users/artemis/Desktop/Screen\ Shot\ 2016-10-21\ at\ 11.08.48\ AM.png"
     # And I should see the name of the file instead of "No file chosen"

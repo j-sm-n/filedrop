@@ -1,7 +1,7 @@
 <h1>Upload a file</h1>
 
-<%= form_for @document, url: user_documents_path, enctype: 'multipart/form-data' do |f| %>
-  <%= f.collection_select(:id, current_user.folders, :id, :name, prompt: false) %>
+<%= form_for([@folders, @document], url: user_documents_path, enctype: 'multipart/form-data') do |f| %>
+<%= f.collection_select(:id, @folders, :id, :name, prompt: false) %>
 	<%= f.file_field :file  %>
 	<%= f.submit 'Upload File' %>
 <% end %>
