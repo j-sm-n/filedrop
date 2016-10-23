@@ -1,8 +1,7 @@
 class Folder < ApplicationRecord
   belongs_to :user
   scope :unrestricted_folders, -> { where(permission_level: 'unrestricted') }
-  # belongs_to :container, foreign_key: :containable, optional: true
-  # belongs_to :folder, optional: true
+
   has_many :containers
   has_many :subfolders, through: :containers, source: :containable, source_type: 'Folder'
   has_many :documents, through: :containers, source: :containable, source_type: 'Document'
@@ -25,6 +24,14 @@ class Folder < ApplicationRecord
   end
 
   def parent #the id of folder selected in dropdown
-    Folder.joins(:containers).where("containers.containable_id" => self.id)
+    Folder.joins(:containers).where("containers.containable_id" => :id)
+  end
+
+  def accessible?(visitor)
+    if user.active?
+      unrestricted? || authorized_users.include?(visitor) || visitor == user
+    else
+      return false
+    end
   end
 end
