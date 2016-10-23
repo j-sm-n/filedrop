@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20161023225816) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "authy_id"
+    t.integer  "status",          default: 0
   end
 
   add_foreign_key "comments", "documents"

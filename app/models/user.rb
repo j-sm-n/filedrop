@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
+  scope :non_admin_users, -> { where(role: 'user') }
+
   validates :email,  presence: true, format: { with: /\A.+@.+$\Z/ }, uniqueness: true
   validates :name, presence: true
   validates :sms_number, presence: true
@@ -8,7 +10,22 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
 
   has_many :folders
+  has_many :folder_permissions
+  # has_many :allowed_folders, through: :folder_permissions
+  enum status: { active: 0, deactivated: 1 }
+  enum role: { user: 0, admin: 1 }
+
   def verify(token)
     TwilioService.new(self).verify(token)
+  end
+
+  def toggle_status?
+    if active?
+      update_attribute(:status, :deactivated)
+    elsif deactivated?
+      update_attribute(:status, :active)
+    else
+      false
+    end
   end
 end
