@@ -18,10 +18,9 @@ class DocumentsController < ApplicationController
     )
 
     @document = Document.new(user_id: user_params, filename: document_params[:file].original_filename, content_type: document_params[:file].content_type)
-    byebug
 
     if @document.save
-      redirect_to folder_path()
+      redirect_to folder_path(parent_folder[:parent])
     else
       flash.new[:notice] = 'There was an error'
       render :new
@@ -39,6 +38,6 @@ class DocumentsController < ApplicationController
   end
 
   def parent_folder
-    params.require(:folder).permit(:id)
+    params.require(:document).permit(:parent)
   end
 end
