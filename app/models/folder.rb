@@ -27,7 +27,7 @@ class Folder < ApplicationRecord
     Folder.joins(:containers).where("containers.containable_id" => :id)
   end
 
-  def accessable?(visitor)
+  def accessible?(visitor)
     if user.active?
       unrestricted? || authorized_users.include?(visitor) || visitor == user
     else
