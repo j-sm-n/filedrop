@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
 
   has_many :folders
+  has_many :folder_permissions
+  # has_many :allowed_folders, through: :folder_permissions
   def verify(token)
     TwilioService.new(self).verify(token)
   end

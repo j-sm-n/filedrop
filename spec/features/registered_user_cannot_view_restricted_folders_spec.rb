@@ -20,11 +20,21 @@ describe 'Regisitered User' do
   context 'has been granted access to a folder' do
     it 'can visit the restricted folders' do
       # As a registered User
+      user = create :user
+      login(user)
+      another_user = create :user, email: 'test@example.com'
       # When I visit a folder path that belongs to another user
+      folder = create :folder, name: 'Anything', user: another_user, permission_level: 'restricted'
+      file = create :document
+      folder.documents << file
       # And I do have access to that folder
+      folder.authorized_users << user
+      visit folder_path(folder)
       # I should see it's content
+      expect(page).to have_content 'Anthing'
       # And I should see options to manage that folder
       # and I should see options to add content
+      expect(page).to have_content 'Upload File'
       # And I should not see an option to delete that folder
     end
   end
