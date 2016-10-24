@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :check_authy_id, only: [:show_verify, :verify]
 
   def new
     @user = User.new
