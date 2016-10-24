@@ -31,8 +31,8 @@ describe 'Registered user' do
     expect(current_path).to eq(edit_user_path(user))
     user_password = user.password_digest
 
-    fill_in 'Password',               with: 'NewPassword'
-    fill_in 'Confirm Password',  with: 'NewPassword'
+    fill_in 'Edit Password',         with: 'NewPassword'
+    fill_in 'Confirm Password', with: 'NewPassword'
     click_on "Update Profile"
 
     expect(current_path).to eq(user_path(user))
