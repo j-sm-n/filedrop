@@ -15,7 +15,9 @@ class Users::FoldersController < ApplicationController
   end
 
   def index
-    @folders = User.find(params[:user_id]).folders.unrestricted_folders
+    @folders = User.find(params[:user_id]).folders.select do |folder|
+      folder.accessible?(current_user)
+    end
   end
 
   private
