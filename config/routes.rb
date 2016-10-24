@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  get '/users/verify', to: 'users#show_verify', as: 'verify'
-  post 'users/verify'
-  post 'users/resent'
+  get '/users/verify', to: 'verification#new', as: 'verify'
+  post '/users/verify', to: 'verification#create'
+  post '/users/resend'
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
