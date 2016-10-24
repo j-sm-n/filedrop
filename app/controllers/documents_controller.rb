@@ -11,12 +11,11 @@ class DocumentsController < ApplicationController
     bucket = S3.bucket(S3_BUCKET.name)
 
     obj = bucket.object(file_name)
-
     obj.put(
       acl: "public-read",
       body: file_to_upload
     )
-    
+
     @document = Document.new(user_id: user_params, filename: document_params[:file].original_filename, content_type: document_params[:file].content_type, url: obj.public_url)
 
     if @document.save
@@ -27,6 +26,7 @@ class DocumentsController < ApplicationController
       render :new
     end
   end
+
 
   private
 

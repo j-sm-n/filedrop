@@ -1,9 +1,12 @@
 <div class="container">
   <h1><%= @folder.name %></h1>
-
   <ul>
     <% @documents.each do |document| %>
-      <%= link_to document.filename, document.url %><br>
+      <%= link_to document.filename, document.url %></h4><br>
+      <%= form_for document, url: download_path do |f| %>
+        Download? <%= f.check_box :filename%><br>
+        <%= f.submit "" %>
+      <% end %>
     <% end %>
   </ul>
 </div>
