@@ -57,12 +57,24 @@
 
 
 
-.user_show .btn {
-  font-size: 18px
+.user_show {
+  .btn {
+    font-size: 18px;
+  }
+  tbody td:first-child {
+    width: 10%;
+    vertical-align: middle;
+  }
 }
 
-.user_edit .btn {
-  font-size: 18px
+.user_edit {
+  .btn {
+    font-size: 18px
+  }
+  tbody td:first-child {
+    width: 10%;
+    vertical-align: middle;
+  }
 }
 
 .profile_icon {
@@ -72,4 +84,8 @@
 .user_edit .btn-primary {
   background: grey;
   color: #ffffff;
+}
+
+.wrapper {
+  width: 80%;
 }
