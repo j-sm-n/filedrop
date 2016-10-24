@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   has_many :folders
   has_many :folder_permissions
-  # has_many :allowed_folders, through: :folder_permissions
+
   enum status: { active: 0, deactivated: 1 }
   enum role: { user: 0, admin: 1 }
 
@@ -40,8 +40,8 @@ class User < ApplicationRecord
       false
     end
   end
-
-  def root_folder
-    folders.create(name: "#{name}'s Stuff")
-  end
+  private
+    def root_folder
+      folders.create(name: "#{name}'s Stuff")
+    end
 end
