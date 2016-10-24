@@ -1,0 +1,28 @@
+<div class="container user_show">
+
+  <table class="table">
+      <thead>
+        <tr>
+          <th><h1>Profile Info:</h1></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><h3>Account Name:</h3></td>
+          <td><h3><%= current_user.name %></h3></td>
+        </tr>
+        <tr>
+          <td><h3>Account Email:</h3></td>
+          <td><h3><%= current_user.email %></h3></td>
+        </tr>
+        <tr>
+          <td><h3>Registered Phone Number:</h3></td>
+          <td><h3><%= current_user.sms_number %></h3></td>
+        </tr>
+      </tbody>
+    </table>
+
+  <%= link_to "<< Back To Dashboard", dashboard_path, class: 'p btn btn-secondary' %>
+  <%= link_to "Edit Profile", edit_user_path(current_user), class: 'p btn btn-secondary' %>
+
+</div>

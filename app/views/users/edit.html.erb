@@ -1,0 +1,40 @@
+
+<div class="container user_edit">
+
+  <%= form_for @user do |f| %>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th><h1>Profile Info:</h1></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><h3><image class='profile_icon' src='/assets/user_icon.svg'></image><%= f.label :name, 'Edit Name' %></h3></td>
+          <td><h3><%= f.text_field :name %></h3></td>
+        </tr>
+        <tr>
+          <td><h3><image class='profile_icon' src='/assets/email_icon.svg'></image><%= f.label :email, 'Edit Email' %></h3></td>
+          <td><h3><%= f.text_field :email %></h3></td>
+        </tr>
+        <tr>
+          <td><h3><image class='profile_icon' src='/assets/password_icon.svg'></image><%= f.label :password, 'Edit Password' %></h3></td>
+          <td><h3><%= f.text_field :password %></h3></td>
+        </tr>
+        <tr>
+          <td><h3><image class='profile_icon' src='/assets/password_icon.svg'></image><%= f.label :password_confirmation, 'Confirm Password' %></h3></td>
+          <td><h3><%= f.text_field :password_confirmation %></h3></td>
+        </tr>
+        <tr>
+          <td><h3><%= link_to "<< Back To Profile", user_path(@user), class: 'btn btn-secondary' %></h3></td>
+          <td><h3><%= f.submit 'Update Profile', class: 'btn btn-primary' %></h3></td>
+        </tr>
+      </tbody>
+    </table>
+
+  <% end %>
+
+
+
+</div>
