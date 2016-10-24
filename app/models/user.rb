@@ -16,6 +16,17 @@ class User < ApplicationRecord
   enum status: { active: 0, deactivated: 1 }
   enum role: { user: 0, admin: 1 }
 
+  def create_authy_user
+    service = TwilioService.new(self)
+    response = service.get_authy_user
+    if response[:success]
+      update_attribute(:authy_id, response[:user][:id])
+    else
+      return false
+    end
+    save
+  end
+
   def verify(token)
     TwilioService.new(self).verify(token)
   end
