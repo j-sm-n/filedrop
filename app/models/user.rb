@@ -12,9 +12,20 @@ class User < ApplicationRecord
 
   has_many :folders
   has_many :folder_permissions
-  # has_many :allowed_folders, through: :folder_permissions
+
   enum status: { active: 0, deactivated: 1 }
   enum role: { user: 0, admin: 1 }
+
+  def create_authy_user
+    service = TwilioService.new(self)
+    response = service.get_authy_user
+    if response[:success]
+      update_attribute(:authy_id, response[:user][:id])
+    else
+      return false
+    end
+    save
+  end
 
   def verify(token)
     TwilioService.new(self).verify(token)
@@ -29,8 +40,8 @@ class User < ApplicationRecord
       false
     end
   end
-
-  def root_folder
-    folders.create(name: "#{name}'s Stuff")
-  end
+  private
+    def root_folder
+      folders.create(name: "#{name}'s Stuff")
+    end
 end
