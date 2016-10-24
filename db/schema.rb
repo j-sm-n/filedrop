@@ -62,6 +62,13 @@ ActiveRecord::Schema.define(version: 20161023225816) do
     t.index ["user_id"], name: "index_folders_on_user_id", using: :btree
   end
 
+  create_table "uploads", force: :cascade do |t|
+    t.string   "url"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
