@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  after_create :root_folder
 
   scope :non_admin_users, -> { where(role: 'user') }
 
@@ -27,5 +28,9 @@ class User < ApplicationRecord
     else
       false
     end
+  end
+
+  def root_folder
+    folders.create(name: "#{name}'s Stuff")
   end
 end
