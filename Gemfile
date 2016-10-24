@@ -31,8 +31,15 @@ gem 'autoprefixer-rails'
 
 gem 'unicorn'
 
+gem 'aws-sdk-v1'
+gem 'aws-sdk', '~> 2'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -47,7 +54,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'mocha'
   gem 'turbolinks'
-  gem 'aws-sdk', '~> 2'
 end
 
 group :development do
