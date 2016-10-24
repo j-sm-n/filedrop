@@ -1,0 +1,10 @@
+<% @users.each do |user| %>
+  <%= user.name %>, User Status: <%= user.status.capitalize %>
+  
+  <% if user.active? %>
+    <%= link_to 'Deactivate', admin_user_path(user), method: :put %>
+  <% else %>
+    <%= link_to 'Activate', admin_user_path(user), method: :put %>
+  <% end %>
+
+<% end %>
