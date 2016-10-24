@@ -1,6 +1,11 @@
-<%= @folder.name %>
-<% @folder.documents.each do |document| %>
-  <%= document.filename %>
-<% end %>
+<div class="container">
+  <h1><%= @folder.name %></h1>
 
-<%= link_to "Upload File", root_path %> <!-- Need to update the correct path -->
+  <ul>
+    <% @documents.each do |document| %>
+      <%= link_to document.filename, document.url %><br>
+    <% end %>
+  </ul>
+</div>
+
+<%= link_to "Upload File", new_user_document_path(current_user.id) %>

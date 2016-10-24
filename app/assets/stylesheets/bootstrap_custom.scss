@@ -54,3 +54,22 @@
 // Utility classes
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
+
+
+
+.user_show .btn {
+  font-size: 18px
+}
+
+.user_edit .btn {
+  font-size: 18px
+}
+
+.profile_icon {
+  margin-right: 50px;
+}
+
+.user_edit .btn-primary {
+  background: grey;
+  color: #ffffff;
+}

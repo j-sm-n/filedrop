@@ -1,20 +1,28 @@
-Logged in as <%= current_user.name %>
+<div class="container user_show">
 
-<%= link_to "Create Folder", new_user_folder_path(current_user.id) %>
+  <table class="table">
+      <thead>
+        <tr>
+          <th><h1>Profile Info:</h1></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><h3>Account Name:</h3></td>
+          <td><h3><%= current_user.name %></h3></td>
+        </tr>
+        <tr>
+          <td><h3>Account Email:</h3></td>
+          <td><h3><%= current_user.email %></h3></td>
+        </tr>
+        <tr>
+          <td><h3>Registered Phone Number:</h3></td>
+          <td><h3><%= current_user.sms_number %></h3></td>
+        </tr>
+      </tbody>
+    </table>
 
-<p>Profile Info:</p>
-<li>
-  <ul>
-    <%= current_user.name %>
-    <%= current_user.email %>
-    <%= current_user.sms_number %>
-  </ul>
-</li>
+  <%= link_to "<< Back To Dashboard", dashboard_path, class: 'p btn btn-secondary' %>
+  <%= link_to "Edit Profile", edit_user_path(current_user), class: 'p btn btn-secondary' %>
 
-<div class="edit_user_link">
-  <%= link_to "Edit Profile", edit_user_path(current_user) %>
-</div>
-
-<div class="back_to_profile">
-  <%= link_to "<< Back To Dashboard", dashboard_path %>
 </div>

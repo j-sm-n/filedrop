@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :documents, only:[:index]
   resources :users, only:[:new, :create, :edit, :update, :show] do
+    resources :documents
     scope module: 'users' do
       resources :folders, only:[:new, :create, :index]
     end
