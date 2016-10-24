@@ -16,7 +16,6 @@ class DocumentsController < ApplicationController
     )
 
     @document = Document.new(user_id: user_params, filename: document_params[:file].original_filename, content_type: document_params[:file].content_type, url: obj.public_url)
-    byebug
     if @document.save
       flash[:success] = @document.set_parent(parent_folder[:parent])
       redirect_to folder_path(parent_folder[:parent])
