@@ -37,9 +37,9 @@
   <% end %>
 <% end %>
 
-  <%= form_for(:comment, url: user_comments_path(current_user)) do |f| %>
-    <%= f.text_area :content, placeholder: "Write a comment..." %>
+  <%= form_for(:comment, url: user_comments_path(current_user), class: "form-group") do |f| %>
+    <%= f.text_area :content, placeholder: "Write a comment...", class: "form-control" %>
     <%= f.hidden_field :document, value: @document.id %>
-    <%= f.submit "Add Comment" %>
+    <%= f.submit "Add Comment", class: "form-control btn btn-primary" %>
   <% end %>
 </div>
