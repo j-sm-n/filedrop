@@ -82,7 +82,5 @@ def login(user)
   expect(current_path).to eq(login_path)
   fill_in "Email", with: user.email
   fill_in "Password", with: user.password
-  within('.btn-default') do
-    click_button "Login"
-  end
+  click_button "Login"
 end
