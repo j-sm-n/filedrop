@@ -41,7 +41,7 @@ describe 'Registered User' do
     expect(page).to have_content('Artwork')
     #end
     # And the users count of folders should increase by one.
-    expect(user.folders.count).to eq(2)
+    expect(user.folders.count).to eq(3)
     expect(folder.subfolders.count).to eq(1)
     expect(Folder.last.restricted?).to be(false)
   end
