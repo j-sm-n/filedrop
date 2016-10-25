@@ -10,7 +10,7 @@ describe 'Registered User' do
     # When I visit the dashboard page
     visit dashboard_path
     # and I click on Create Folder
-    click_on 'Create Folder'
+    click_on 'Create a Folder'
     # and I fill in the form
     fill_in 'Folder name', with: 'Students'
     # And I choose the parent folder

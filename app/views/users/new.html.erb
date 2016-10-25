@@ -1,30 +1,28 @@
 
-<%= form_for @user do |f| %>
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-      <form>
+        <%= form_for @user do |f| %>
         <div class="form-group">
           <%= f.label :name %>
-          <%= f.text_field :name, type: 'email', class: 'form-control', id: 'exampleInputName1', placeholder: 'Name' %>
+          <%= f.text_field :name, type: 'text', class: 'form-control' %>
         </div>
         <div class="form-group">
           <%= f.label :email %>
-          <%= f.text_field :email, type: 'email', class: 'form-control', id: 'exampleInputEmail1', placeholder: 'Email' %>
+          <%= f.text_field :email, type: 'email', class: 'form-control' %>
         </div>
         <div class="form-group">
           <%= f.label :sms_number, 'SMS Number' %>
-          <%= f.text_field :sms_number, type: 'sms_number', class: 'form-control', id: 'exampleInputSms1', placeholder: 'SMS Number' %>
+          <%= f.text_field :sms_number, type: 'text', class: 'form-control' %>
         </div>
         <div class="form-group">
           <%= f.label :password %>
-          <%= f.text_field :password, type: 'password', class: 'form-control', id: 'exampleInputPassword1', placeholder: 'Password' %>
+          <%= f.text_field :password, type: 'password', class: 'form-control' %>
         </div>
         <div class="form-group">
-          <%= f.label :password_confirmation %>
-          <%= f.text_field :password_confirmation, type: 'password_confirmation', class: 'form-control', id: 'exampleInputPasswordConfirmation1', placeholder: 'Confirm Password' %>
+          <%= f.label :password_confirmation, 'Confirm Password' %>
+          <%= f.text_field :password_confirmation, type: 'password', class: 'form-control' %>
         </div>
-        <%= f.submit 'Create Account', type: 'submit', class: 'btn btn-default'%>
-      </form>
+        <%= f.submit 'Create Account' %>
+        <% end %>
     </div>
   </div>
-<% end %>

@@ -21,25 +21,25 @@
 
   </div>
 
+  <div class="row">
+    <div class="col-md-6 title-dashboard">
+      <h2><%= link_to "View Personal Folders", user_folders_path(current_user) %></h2>
+    </div>
+    <div class="col-md-6 title-dashboard">
+      <h2><%= link_to "View Public Folders", folders_path %></h2>
+    </div>
+  </div>
+
   <div class='row'>
 
     <div class="col-md-6 icon-dashboard">
-      <h2><%= link_to "View Personal Folders", user_folders_path(current_user) %></h2>
       <a href="/users/<%= current_user.id %>/folders"><image src='assets/personal_files_image.svg'></image></a>
     </div>
 
     <div class="col-md-6 icon-dashboard">
-      <h2><%= link_to "View Public Folders", folders_path %></h2>
       <a href="/folders"><image src='assets/public_files_image.svg'></image></a>
     </div>
 
   </div>
 
-</div>
-
-<%= link_to "Create Folder", new_user_folder_path(current_user.id) %>
-<%= link_to "Upload File", new_user_document_path(current_user.id) %>
-
-<div class="view_user_profile">
-  <%= link_to "View Profile Info", user_path(current_user) %>
 </div>

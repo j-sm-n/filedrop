@@ -3,7 +3,6 @@ require 'rails_helper'
 describe "registered user" do
   it "can login" do
     user = create :user, name: "Emile Garbanzo", email: "example@example.com", password: "password", password_confirmation: "password"
-
     visit root_path
 
     within('.navbar-right') do
