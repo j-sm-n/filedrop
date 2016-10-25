@@ -32,9 +32,9 @@ describe "Twilio Service" do
       )
       service = TwilioService.new(user)
       service.generate_code
- byebug
+ 
       response = service.verify(ENV['AUTHY_TOKEN'])
- byebug
+ 
       expect(response[:success]).to eq(true)
     end
   end
