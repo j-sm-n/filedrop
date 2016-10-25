@@ -1,4 +1,41 @@
-Logged in as <%= current_user.name %>
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6 title-dashboard">
+      <h2><%= link_to "Create a Folder", new_user_folder_path(current_user) %></h2>
+    </div>
+    <div class="col-md-6 title-dashboard">
+      <h2><%= link_to "Upload a file", new_user_document_path(current_user) %></h2>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-6 icon-dashboard">
+      <a href='/users/<%= current_user.id %>/folders/new'><image src='assets/new_folder_image.svg'></image></a>
+    </div>
+
+    <div class="col-md-6 icon-dashboard">
+      <a href='/users/<%= current_user.id %>/documents/new'><image src='assets/upload_file_image.svg'></image></a>
+    </div>
+
+  </div>
+
+  <div class='row'>
+
+    <div class="col-md-6 icon-dashboard">
+      <h2>View Personal Folders</h2>
+      <image src='assets/personal_files_image.svg'></image>
+    </div>
+
+    <div class="col-md-6 icon-dashboard">
+      <h2>View Public Folders</h2>
+      <image src='assets/public_files_image.svg'></image>
+    </div>
+
+  </div>
+
+</div>
 
 <%= link_to "Create Folder", new_user_folder_path(current_user.id) %>
 <%= link_to "Upload File", new_user_document_path(current_user.id) %>
