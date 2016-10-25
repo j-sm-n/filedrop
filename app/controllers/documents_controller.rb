@@ -29,9 +29,8 @@ class DocumentsController < ApplicationController
   end
 
   def index
-    byebug
-    # is this what I want to be sending back?
-    @folders = current_user.folders
+    @root_folder = current_user.folders[0]
+    @folders = current_user.folders.drop(1)
   end
 
   private
