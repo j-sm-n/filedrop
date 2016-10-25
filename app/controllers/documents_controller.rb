@@ -28,6 +28,12 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def index
+    byebug
+    # is this what I want to be sending back?
+    @folders = current_user.folders
+  end
+
   private
 
   def document_params
