@@ -21,6 +21,7 @@
         <% if current_user %>
           <li><a href="/users/<%= current_user.id %>">My Account <span class="sr-only">(current)</span></a></li>
           <li><a href="/users/<%= current_user.id %>/folders">My Folders</a></li>
+          <li><a href="/dashboard">Dashboard <span class="sr-only">(current)</span></a></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
