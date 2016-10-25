@@ -11,22 +11,18 @@ class DownloadsController < ApplicationController
     files = file_ids_to_download.map do |id|
       Document.find(id)
     end
-    byebug
-    # Download the files from S3 to a local folder
     files.each do |file|
-      # Get the file object
       file_obj = bucket.object("#{file.amazon_path}/#{file.filename}")
-      # Save it on disk
       file_obj.get(response_target: "tmp_dir/#{file.filename}")
     end
-    # Create the zip
-    Zip::File.open("tmp_dir/your_files.zip", Zip::File::CREATE) do |zipfile|
+    zipfile_name = Time.now
+    Zip::File.open("tmp_dir/#{zipfile_name}.zip", Zip::File::CREATE) do |zipfile|
       files.each do |file|
-        # Add the file to the zip
-        zipfile.add(file, "tmp_dir/#{file.filename}")
+        zipfile.add(file.filename, "tmp_dir/#{file.filename}")
       end
     end
-    send_file "tmp_dir/your_files.zip"
+    send_file "tmp_dir/#{zipfile_name}.zip"
+    File.delete("./tmp_dir/.zip")
   end
 
   private
