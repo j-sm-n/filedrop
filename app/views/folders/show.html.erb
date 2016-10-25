@@ -1,14 +1,16 @@
 <div class="container">
   <h1><%= @folder.name %></h1>
   <ul>
-    <% @documents.each do |document| %>
-      <%= link_to document.filename, document.url %></h4><br>
-      <%= form_for document, url: download_path do |f| %>
-        Download? <%= f.check_box :filename%><br>
-        <%= f.submit "" %>
+    <%= form_for(:download, url: downloads_path) do |f| %>
+      <% @documents.each do |document| %>
+      <%= link_to document.filename, document.url %><br>
+        <%= f.check_box(document.id)%>
+        <%= f.label "Download?" %><br>
       <% end %>
+      <%= f.submit "Download Selected Files" %>
     <% end %>
   </ul>
 </div>
+
 
 <%= link_to "Upload File", new_user_document_path(current_user.id) %>

@@ -9,7 +9,6 @@ class DocumentsController < ApplicationController
     file_to_upload = params[:document][:file]
     bucket = S3.bucket(S3_BUCKET.name)
 
-
     obj = bucket.object(filepath)
     obj.put(
       acl: "public-read",
