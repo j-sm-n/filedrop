@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="well well-lg">
+    <h1><%= @document.filename %></h1>
+    <p><%= link_to "View Document", @document.url %></p>
+    <p>File type: <%= @document.content_type %></p>
+    <p><%= link_to "Delete", "#", method: :destroy %></p>
+  </div>
+</div>
+
+<div class="container comments">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Comments</h3>
+    </div>
+  </div>
+
+<% if @document.comments %>
+  <% @document.comments.each do |comment| %>
+    <div class="row comment">
+      <div class="col-sm-1">
+        <div class="thumbnail">
+          <image class='profile_icon' src='/assets/user_icon.svg'></image>
+        </div>
+      </div>
+
+      <div class="col-sm-11">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong> <%= comment.user.name %> </strong> <span class="text-muted"><%= comment.created_at.strftime("posted on %m/%d/%Y") %></span>
+          </div>
+          <div class="panel-body">
+            <%= comment.content %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+  <%= form_for(:comment, url: user_comments_path(current_user)) do |f| %>
+    <%= f.text_area :content, placeholder: "Write a comment..." %>
+    <%= f.hidden_field :document, value: @document.id %>
+    <%= f.submit "Add Comment" %>
+  <% end %>
+</div>

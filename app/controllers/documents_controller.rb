@@ -29,8 +29,13 @@ class DocumentsController < ApplicationController
   end
 
   def index
-    @root_folder = current_user.folders[0]
-    @folders = current_user.folders.drop(1)
+    # @root_folder = current_user.folders[0]
+    # @folders = current_user.folders.drop(1)
+  end
+
+  def show
+    @document = Document.find(params[:id])
+    # @comment = @document.comments.new
   end
 
   private

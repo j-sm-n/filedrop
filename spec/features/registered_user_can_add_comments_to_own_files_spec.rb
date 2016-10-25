@@ -16,7 +16,7 @@ describe 'Registered User' do
     # I log in and am on my dashboard,
     login(user)
 
-    visit user_documents_path(user.id, document_3)
+    visit user_document_path(user.id, document_3)
 
     # Tests user 'My Files' view
       # expect(current_path).to eq(dashboard_path)
@@ -50,26 +50,19 @@ describe 'Registered User' do
     expect(page).to have_content("ch-2-beccas-revenge.txt")
     # And I should see all comments associated with that file,
     within('.comments') do
-      expect(page).to have_selector('.comments', count: 2)
-      within(first('.comment')) do
-        expect(page).to have_content("This is my first go at it.")
-      end
-
-      within(last('.comment')) do
-        expect(page).to have_content("I may scrap this chapter.")
-      end
+      expect(page).to have_selector('.comment', count: 2)
+      expect(page).to have_content("This is my first go at it.")
+      expect(page).to have_content("I may scrap this chapter.")
     end
     # And I should see an empty input field for a new comment,
     # When I fill in the comment field with text,
-    fill_in "Comment", with: "This is some riveting stuff"
+    fill_in "comment[content]", with: "This is some riveting stuff"
     # When I click 'Add Comment,'
     click_on "Add Comment"
     # I should see my comment added to the list of all comments.
     within('.comments') do
-      expect(page).to have_selector('.comments', count: 3)
-      within(last('.comment')) do
-        expect(page).to have_content("This is some riveting stuff")
-      end
+      expect(page).to have_selector('.comment', count: 3)
+      expect(page).to have_content("This is some riveting stuff")
     end
     expect(document_3.comments.count).to eq(3)
   end
