@@ -15,14 +15,19 @@ class DownloadsController < ApplicationController
       file_obj = bucket.object("#{file.amazon_path}/#{file.filename}")
       file_obj.get(response_target: "tmp_dir/#{file.filename}")
     end
-    zipfile_name = Time.now
-    Zip::File.open("tmp_dir/#{zipfile_name}.zip", Zip::File::CREATE) do |zipfile|
+
+    zipfile_name = "tmp_dir/#{Time.now}.zip"
+    Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
       files.each do |file|
         zipfile.add(file.filename, "tmp_dir/#{file.filename}")
       end
     end
-    send_file "tmp_dir/#{zipfile_name}.zip"
-    File.delete("./tmp_dir/.zip")
+    send_file zipfile_name
+    if session[:downloaded_files]
+      session[:downloaded_files] << zipfile_name
+    else
+      session[:downloaded_files] = [zipfile_name]
+    end
   end
 
   private
