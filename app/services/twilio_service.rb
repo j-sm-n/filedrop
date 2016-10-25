@@ -1,9 +1,12 @@
 class TwilioService
   def initialize(user)
-    @user = User.find(user) || User.new(user)
+    if user.id
+      @user = User.find(user.id)
+    else
+      @user = User.new(user.attributes)
+    end
   end
   #get authy user
-
   def get_authy_user
     response = conn.post do |req|
       req.url "/protected/json/users/new"
