@@ -46,7 +46,7 @@ describe 'Registered user' do
     visit dashboard_path
     click_on "View Profile Info"
 
-    expect(page).to have_content("Users Name")
+    expect(page).to have_content("Account Name")
 
     click_on "Edit Profile"
     expect(current_path).to eq(edit_user_path(user))
