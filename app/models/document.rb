@@ -12,6 +12,11 @@ class Document < ApplicationRecord
   end
 
   def parent #the id of folder selected in dropdown
-    Folder.joins(:containers).where("containers.containable_id" => self.id)
+    Folder.joins(:containers).where("containers.containable_id = ? and containers.containable_type = ?", "#{self.id}", 'Document')    
   end
+
+  def amazon_path
+    "#{parent.user_id}/#{parent.id}"
+  end
+
 end
