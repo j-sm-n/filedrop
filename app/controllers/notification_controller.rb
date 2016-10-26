@@ -1,7 +1,7 @@
 class NotificationController < ApplicationController
 
   def create
-    api_key = API.generate_new_api
+    api_key = ApiKey.generate_new_api
     @application = ExternalApplication.new(name: ext_app_params[:name],
                             user_id: current_user.id,
                             api_key: api_key)
@@ -16,7 +16,7 @@ class NotificationController < ApplicationController
   end
 
   def update
-    api_key = API.generate_new_api
+    api_key = ApiKey.generate_new_api
     @application = ExternalApplication.find(ext_app_id[:id])
     if @application.update_attribute(:api_key, api_key)
       ApiNotifierMailer.send_api(@application, current_user.email).deliver_now
