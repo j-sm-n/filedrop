@@ -1,5 +1,6 @@
 class Document < ApplicationRecord
   belongs_to :user
+  has_many :comments
 
   def set_parent(parent_folder_id)
     if parent_folder_id
