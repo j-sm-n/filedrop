@@ -10,7 +10,7 @@ class Folder < ApplicationRecord
   has_many :folder_permissions, dependent: :destroy
   has_many :users, through: :folder_permissions
 
-  has_one :container, as: :containable
+  has_one :container, as: :containable, dependent: :destroy
   has_one :folder, through: :container
 
   enum permission_level: %w(restricted unrestricted)
