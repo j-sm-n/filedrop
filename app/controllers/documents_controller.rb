@@ -7,11 +7,9 @@ class DocumentsController < ApplicationController
 
   def create
     file_to_upload = params[:document][:file]
-    file_name = params[:document][:file].original_filename
     bucket = S3.bucket(S3_BUCKET.name)
 
-    obj = bucket.object(file_name)
-
+    obj = bucket.object(filepath)
     obj.put(
       acl: "public-read",
       body: file_to_upload
@@ -42,6 +40,10 @@ class DocumentsController < ApplicationController
 
   def document_params
     params.require(:document).permit(:id, :file)
+  end
+
+  def filepath
+    params[:user_id] + "/" + params[:document][:parent] + "/" + document_params[:file].original_filename
   end
 
   def user_params
