@@ -21,5 +21,17 @@ describe User, type: :model do
     end
   end
 
+  it 'takes dependents out with it when destroyed' do
+    user = create :user
+    folder = create :folder, user: user
 
+    expect { user.destroy }.to change { Folder.count }.by(-2)
+  end
+
+  it 'takes out grandchildren' do
+    user = create :user
+    root = user.folders.first
+    root.subfolders.create(name: 'Test', user: user)
+    expect { user.destroy }.to change { Folder.count }.by(-2)
+  end
 end

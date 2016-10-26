@@ -1,4 +1,5 @@
 class Document < ApplicationRecord
+  before_destroy :remove_from_storage
   belongs_to :user
   has_many :comments
 
@@ -23,4 +24,8 @@ class Document < ApplicationRecord
     "#{parent.user_id}/#{parent.id}"
   end
 
+  def remove_from_storage
+    bucket = ENV['S3_BUCKET']
+    bucket.object(amazon_path+"/#{filename}").delete
+  end
 end
