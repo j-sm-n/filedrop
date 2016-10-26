@@ -2,7 +2,6 @@ class DownloadsController < ApplicationController
 
   def new
     @folder = Folder.find(params[:id])
-    # @document = Document.where(filename: params[:filename], parent_id: params[:id])
     @documents = @folder.documents
   end
 
