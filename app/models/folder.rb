@@ -10,7 +10,6 @@ class Folder < ApplicationRecord
   has_many :folder_permissions
   has_many :users, through: :folder_permissions
 
-
   enum permission_level: %w(restricted unrestricted)
 
   def set_parent(parent_folder_id)
