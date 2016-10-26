@@ -14,10 +14,12 @@ describe User, type: :model do
       # service.get_authy_user
       service.generate_code
       #testing with real code and saving to VCR
-      
+
       response = user.verify(ENV['AUTHY_TOKEN'])
-      
+
       expect(response[:success]).to eq(true)
     end
   end
+
+
 end
