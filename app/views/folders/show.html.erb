@@ -12,5 +12,6 @@
   </ul>
 </div>
 
-
-<%= link_to "Upload File", new_user_document_path(current_user.id) %>
+<% if current_user %>
+  <%= link_to "Upload File", new_user_document_path(current_user.id) %>
+<% end %>
