@@ -8,10 +8,10 @@ describe 'Registered User' do
     # When I visit the dashboard page
     expect(current_path).to eq(dashboard_path)
     # And I click on Create Folder
-    click_on 'Create Folder'
+    click_on 'Create a Folder'
     # I should see a form to create a Folder.
     expect(page).to have_content('Folder name')
-    expect(page).to have_content('Parent folder')
+    expect(page).to have_content('Parent Folder')
     expect(page).to have_content('Unrestricted')
     expect(page).to have_content('Restricted')
   end
@@ -25,11 +25,11 @@ describe 'Registered User' do
 
     login(user)
     #When I click on Create Folder
-    click_on 'Create Folder'
+    click_on 'Create a Folder'
     # And I fill in the folder name
     fill_in 'Folder name', with: 'Artwork'
     # And I choose the parent folder
-    select folder.name, from: 'folder[id]'
+    select folder.name, from: 'folder[parent]'
     # And I choose the folder's permission level
     find(:css, '#folder_permission_level_unrestricted').set(true)
     # And I click submit
@@ -41,7 +41,7 @@ describe 'Registered User' do
     expect(page).to have_content('Artwork')
     #end
     # And the users count of folders should increase by one.
-    expect(user.folders.count).to eq(2)
+    expect(user.folders.count).to eq(3)
     expect(folder.subfolders.count).to eq(1)
     expect(Folder.last.restricted?).to be(false)
   end

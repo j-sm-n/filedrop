@@ -1,11 +1,35 @@
-<%= form_for ([current_user, @folder]) do |f| %>
-  <%= f.label :name, 'Folder name' %>
-  <%= f.text_field :name %>
-  <%= f.label 'Parent Folder' %>
-  <%= f.collection_select(:id, current_user.folders, :id, :name, prompt: false) %>
-  <%= f.radio_button :permission_level, 'unrestricted', checked: true %>
-  <%= label :permission_level_unrestricted, 'Unrestricted' %>
-  <%= f.radio_button :permission_level, 'restricted'%>
-  <%= label :permission_level_restricted, 'Restricted' %>
-  <%= f.submit %>
-<% end %>
+<div class="row">
+	<div class="container">
+    <div class="col-md-6">
+        <%= form_for ([current_user, @folder]) do |f| %>
+          <div class="form-group">
+            <%= f.label :name, 'Folder name' %>
+            <%= f.text_field :name, type: 'text', class: 'form-control', id: 'folder_name' %>
+          </div>
+  			  <div class="form-group">
+  					<label for="parent-folder">Parent Folder</label>
+            <%= select_tag "folder[parent]", options_from_collection_for_select(current_user.folders, "id", "name"), prompt: false %>
+  			  </div>
+
+          <fieldset class="form-group row">
+            <legend class="col-form-legend col-md-4">Permission Level</legend>
+              <div class="col-sm-6">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <%= f.radio_button :permission_level, 'unrestricted', checked: true, class: 'form-check-input' %>
+                    <%= label :permission_level_unrestricted, 'Unrestricted' %>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <%= f.radio_button :permission_level, 'restricted', class: 'form-check-input' %>
+                    <%= label :permission_level_restricted, 'Restricted' %>
+                  </label>
+                </div>
+              </div>
+          </fieldset>
+        <%= f.submit class: 'btn btn-default' %>
+        <% end %>
+    </div>
+	</div>
+</div>

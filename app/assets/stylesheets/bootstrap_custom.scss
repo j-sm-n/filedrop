@@ -56,13 +56,50 @@
 @import "bootstrap/responsive-utilities";
 
 
-
-.user_show .btn {
-  font-size: 18px
+.title-dashboard {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  a {
+    color: lighten(grey, 10%)
+  }
 }
 
-.user_edit .btn {
-  font-size: 18px
+.icon-dashboard {
+  vertical-align: center;
+  text-align: center;
+  background-color: lighten(grey, 40%);
+  padding: 10px;
+  border: 10px solid white;
+}
+
+
+.dashboard .row:nth-child(3) {
+  margin-top: 20px;
+}
+
+.user-create .row {
+  margin-top: 50px;
+}
+
+.user_show {
+  .btn {
+    font-size: 18px;
+  }
+  tbody td:first-child {
+    width: 10%;
+    vertical-align: middle;
+  }
+}
+
+.user_edit {
+  .btn {
+    font-size: 18px
+  }
+  tbody td:first-child {
+    width: 10%;
+    vertical-align: middle;
+  }
 }
 
 .profile_icon {
@@ -72,4 +109,26 @@
 .user_edit .btn-primary {
   background: grey;
   color: #ffffff;
+}
+
+.wrapper {
+  width: 80%;
+}
+
+.home-container {
+  background-color: lighten(grey, 30%);
+  .home-links {
+    background-color: lighten(grey, 50%);
+    margin-right: 2px;
+    margin-left: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 50px;
+  }
+  a {
+    color: lighten(grey, 10%);
+    font-size: 30px;
+    align-self: center;
+    vertical-align: center;
+  }
 }

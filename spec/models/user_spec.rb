@@ -14,9 +14,9 @@ describe User, type: :model do
       # service.get_authy_user
       service.generate_code
       #testing with real code and saving to VCR
-      byebug
+      
       response = user.verify(ENV['AUTHY_TOKEN'])
-      byebug
+      
       expect(response[:success]).to eq(true)
     end
   end

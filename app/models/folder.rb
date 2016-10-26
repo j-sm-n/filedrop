@@ -10,7 +10,6 @@ class Folder < ApplicationRecord
   has_many :folder_permissions
   has_many :users, through: :folder_permissions
 
-
   enum permission_level: %w(restricted unrestricted)
 
   def set_parent(parent_folder_id)
@@ -23,13 +22,15 @@ class Folder < ApplicationRecord
     end
   end
 
-  def parent #the id of folder selected in dropdown
-    Folder.joins(:containers).where("containers.containable_id" => :id)
+  def parent
+    Folder.joins(:containers).where("containers.containable_id = ? and containers.containable_type = ?", "#{self.id}", 'Folder').first
   end
 
   def accessible?(visitor)
-    if user.active?
-      unrestricted? || authorized_users.include?(visitor) || visitor == user
+    if user.active? && visitor
+      unrestricted? || authorized_users.include?(visitor) || visitor.admin? || visitor == user
+    elsif user.active?
+      unrestricted?
     else
       return false
     end
