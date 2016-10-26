@@ -28,6 +28,13 @@ class NotificationController < ApplicationController
     end
   end
 
+  def destroy
+    @application = current_user.external_applications.find(ext_app_id[:id])
+    @application.destroy
+    flash[:success] = "Your key has been deleted!"
+    redirect_to api_request_path
+  end
+
   private
     def ext_app_params
       params.require(:notification).permit(:name)

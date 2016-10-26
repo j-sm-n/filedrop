@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/users/resend'
   post '/notification', to: 'notification#create'
   put '/notification', to: 'notification#update'
+  delete '/notification', to: 'notification#destroy'
   get '/api_request', to: 'external_application#index'
 
   namespace :admin do
