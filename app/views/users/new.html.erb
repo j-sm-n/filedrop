@@ -1,13 +1,28 @@
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :sms_number, 'SMS Number' %>
-  <%= f.text_field :sms_number %>
-  <%= f.label :password %>
-  <%= f.text_field :password %>
-  <%= f.label :password_confirmation, 'Confirm Password' %>
-  <%= f.text_field :password_confirmation %>
-  <%= f.submit 'Create Account' %>
-<% end %>
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <%= form_for @user do |f| %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, type: 'text', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email, type: 'email', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :sms_number, 'SMS Number' %>
+          <%= f.text_field :sms_number, type: 'text', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.text_field :password, type: 'password', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation, 'Confirm Password' %>
+          <%= f.text_field :password_confirmation, type: 'password', class: 'form-control' %>
+        </div>
+        <%= f.submit 'Create Account' %>
+        <% end %>
+    </div>
+  </div>

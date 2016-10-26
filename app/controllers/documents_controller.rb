@@ -15,6 +15,7 @@ class DocumentsController < ApplicationController
       body: file_to_upload
     )
     @document = Document.new(user_id: user_params, filename: document_params[:file].original_filename, content_type: document_params[:file].content_type, url: obj.public_url)
+
     if @document.save
       flash[:success] = @document.set_parent(parent_folder[:parent])
       redirect_to folder_path(parent_folder[:parent])
@@ -22,6 +23,16 @@ class DocumentsController < ApplicationController
       flash.new[:notice] = 'There was an error'
       render :new
     end
+  end
+
+  def index
+    # @root_folder = current_user.folders[0]
+    # @folders = current_user.folders.drop(1)
+  end
+
+  def show
+    @document = Document.find(params[:id])
+    # @comment = @document.comments.new
   end
 
   private

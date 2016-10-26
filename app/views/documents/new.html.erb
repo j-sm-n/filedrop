@@ -1,7 +1,15 @@
-<h1>Upload a file</h1>
-
-<%= form_for([@folders, @document], url: user_documents_path, enctype: 'multipart/form-data') do |f| %>
-	<%= select_tag "document[parent]", options_from_collection_for_select(@folders, "id", "name"), prompt: false %>
-	<%= f.file_field :file  %>
-	<%= f.submit 'Upload File' %>
-<% end %>
+<div class="row">
+	<div class="container">
+		<h1>Upload a file</h1>
+		<%= form_for([@folders, @document], url: user_documents_path, enctype: 'multipart/form-data') do |f| %>
+		  <div class="form-group">
+				<label for="parent-folder">Parent Folder</label>
+				<%= select_tag "document[parent]", options_from_collection_for_select(@folders, "id", "name"), prompt: false %>
+		  </div>
+		  <div class="form-group">
+				<%= f.file_field :file, class:'custom-file' %>
+			</div>
+				<%= f.submit 'Upload File', class: 'btn btn-default' %>
+		<% end %>
+	</div>
+</div>

@@ -1,5 +1,6 @@
 class Document < ApplicationRecord
   belongs_to :user
+  has_many :comments
 
   def set_parent(parent_folder_id)
     if parent_folder_id
@@ -11,7 +12,7 @@ class Document < ApplicationRecord
     end
   end
 
-  def parent #the id of folder selected in dropdown
+  def parent
     Folder.joins(:containers).where("containers.containable_id = ? and containers.containable_type = ?", "#{self.id}", 'Document').first
   end
 

@@ -4,7 +4,6 @@ describe 'Admin dashboard' do
   it 'gives admin functionality to take user offline' do
     user = create :user, name: 'Chad', email: 'chad@example.com'
     admin = create :user, role: 1
-
     # -As a platform admin who is logged in
     login(admin)
     # -When I click on dashboard

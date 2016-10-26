@@ -52,6 +52,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'mocha'
   gem 'turbolinks'
+  gem 'aws-sdk', '~> 2'
+  gem 'faker'
 end
 
 group :development do
