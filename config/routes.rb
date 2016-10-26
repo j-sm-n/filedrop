@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     scope module: 'users' do
       resources :folders, only:[:new, :create, :index]
     end
-    resources :comments, only: [:new, :create]
+    resources :comments, only: [:new, :create, :destroy]
   end
 
   resources :folders, only:[:index, :show]

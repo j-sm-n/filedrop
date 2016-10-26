@@ -20,14 +20,14 @@ describe 'Registered User' do
       expect(page).to have_content("You missed a word.")
     end
 
-    within(first('.comments')) do
-      click_on "X"
+    within(first('.comment')) do
+      click_on "Delete"
     end
 
     within('.comments') do
       expect(page).to have_selector('.comment', count: 1)
-      expect(page).to have_content("Such a helpful screenshot")
-      expect(page).to_not have_content("You missed a word.")
+      expect(page).to_not have_content("Such a helpful screenshot")
+      expect(page).to have_content("You missed a word.")
     end
   end
 
