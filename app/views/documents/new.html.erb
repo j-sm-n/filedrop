@@ -1,11 +1,10 @@
-
 <div class="row">
 	<div class="container">
 		<h1>Upload a file</h1>
 		<%= form_for([@folders, @document], url: user_documents_path, enctype: 'multipart/form-data') do |f| %>
 		  <div class="form-group">
 				<label for="parent-folder">Parent Folder</label>
-				<%= f.collection_select(:parent, @folders, :id, :name, prompt: false, class: 'custom-select') %>
+				<%= select_tag "document[parent]", options_from_collection_for_select(@folders, "id", "name"), prompt: false %>
 		  </div>
 		  <div class="form-group">
 				<%= f.file_field :file, class:'custom-file' %>

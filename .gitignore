@@ -22,3 +22,6 @@ vcr_cassettes/
 
 # Ignore application configuration
 /config/application.yml
+
+# tmp_dir is used in downloading, but its content should be ignored
+/tmp_dir/*
