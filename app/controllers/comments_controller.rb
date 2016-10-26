@@ -22,9 +22,24 @@ class CommentsController < ApplicationController
     redirect_to user_document_path(params[:user_id], params[:id])
   end
 
+  def edit
+    @comment = Comment.find(params[:comment_id])
+  end
+
+  def update
+    @comment = Comment.find(comment_params[:comment_id])
+
+    if @comment.update_attributes(content: comment_params[:content])
+      flash[:success] = "Comment has been updated!"
+      redirect_to user_document_path([params[:document], current_user])
+    else
+      flash[:warning] = "Comment cannot be left blank."
+    end
+  end
+
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :document)
+    params.require(:comment).permit(:content, :document, :comment_id)
   end
 end

@@ -28,7 +28,8 @@
           <div class="panel-heading">
             <strong> <%= comment.user.name %> </strong>
             <span class="text-muted"><%= format_comment_time(comment.created_at) %></span>
-            <span class="text-muted text-xs-right"><%= link_to "Delete", user_comment_path(comment_id: comment.id), method: :delete %></span>
+            <span class="text-muted"><%= link_to "Edit", edit_user_comment_path(comment_id: comment.id) %></span>
+            <span class="text-muted"><%= link_to "Delete", user_comment_path(comment_id: comment.id), method: :delete %></span>
           </div>
           <div class="panel-body">
             <%= comment.content %>
