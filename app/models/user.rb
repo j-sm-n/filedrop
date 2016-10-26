@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_many :folders
   has_many :folder_permissions
+  has_many :external_applications
 
   enum status: { active: 0, deactivated: 1 }
   enum role: { user: 0, admin: 1 }
@@ -39,6 +40,10 @@ class User < ApplicationRecord
     else
       false
     end
+  end
+
+  def api_key
+    
   end
   private
     def root_folder
