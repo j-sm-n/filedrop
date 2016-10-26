@@ -20,6 +20,21 @@ class Users::FoldersController < ApplicationController
     end
   end
 
+  def edit
+    @folder = current_user.folders.find(params[:id])
+  end
+
+  def update
+    @folder = current_user.folders.find(params[:id])
+    if @folder.update(folder_params)
+      flash[:success] = 'Your folder has been updated'
+      redirect_to folder_path(@folder)
+    else
+      flash.now[:error] = @folder.errors.full_messages.join('. ')
+      render :edit
+    end
+  end
+
   private
     def folder_params
       params.require(:folder).permit(:name, :permission_level)
