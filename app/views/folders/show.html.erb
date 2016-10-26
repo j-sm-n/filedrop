@@ -1,5 +1,6 @@
 <div class="container">
   <h1><%= @folder.name %></h1>
+  <%= link_to "Edit Folder", edit_user_folder_path(current_user.id, @folder.id) %>
   <ul>
     <%= form_for(:download, url: downloads_path) do |f| %>
       <% @documents.each do |document| %>
@@ -12,5 +13,6 @@
   </ul>
 </div>
 
-
-<%= link_to "Upload File", new_user_document_path(current_user.id) %>
+<% if current_user %>
+  <%= link_to "Upload File", new_user_document_path(current_user.id) %>
+<% end %>

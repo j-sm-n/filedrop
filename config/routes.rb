@@ -15,13 +15,13 @@ Rails.application.routes.draw do
   end
 
 
-  resources :documents, only:[:index]
+  resources :documents, only:[:index] #TODO move this?
   resources :users, only:[:new, :create, :edit, :update, :show] do
-    resources :documents, only:[:new, :create]
+    resources :documents, only:[:new, :create, :show]
     scope module: 'users' do
-      resources :folders, only:[:new, :create, :index]
+      resources :folders, only:[:new, :create, :index, :edit, :update]
     end
-    resources :comments, only: [:new, :create]
+    resources :comments, only: [:new, :create, :destroy, :edit, :update]
   end
 
   resources :folders, only:[:index, :show]

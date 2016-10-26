@@ -1,0 +1,10 @@
+<div class="row">
+	<div class="container">
+		<h1>Edit File</h1>
+		<%= form_for @folder, url: user_folder_path do |f| %>
+			<%= f.label :name%>
+      <%= f.text_field :name %>
+			<%= f.submit 'Update Folder' %>
+		<% end %>
+	</div>
+</div>

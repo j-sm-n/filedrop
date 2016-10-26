@@ -7,7 +7,7 @@
             <%= f.text_field :name, type: 'text', class: 'form-control', id: 'folder_name' %>
           </div>
   			  <div class="form-group">
-  					
+  					<label for="parent-folder">Parent Folder</label>
             <%= select_tag "folder[parent]", options_from_collection_for_select(current_user.folders, "id", "name"), prompt: false %>
   			  </div>
 

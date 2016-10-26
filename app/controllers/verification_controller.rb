@@ -1,5 +1,6 @@
 class VerificationController < ApplicationController
   before_action :check_authy_id
+  
   def new
     service = TwilioService.new(current_user)
     service.generate_code
@@ -20,7 +21,7 @@ class VerificationController < ApplicationController
     def token_params
       params.require(:authy_verification).permit(:token)
     end
-    
+
     def check_authy_id
       unless current_user && current_user.authy_id
         redirect_to new_user_path
