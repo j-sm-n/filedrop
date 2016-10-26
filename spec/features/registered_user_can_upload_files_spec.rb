@@ -12,7 +12,7 @@ describe "Registered User" do
     # After I log in,
     login(user)
     # I click on "Upload File,"
-    click_on "Upload File"
+    click_on "Upload a File"
     # And I should see a form to upload a single file,
     expect(current_path).to eq(new_user_document_path(user.id))
     # And I should see "No file chosen" next to a button called "Choose File"

@@ -5,7 +5,7 @@ describe 'Registered user' do
     user = create :user
     ApplicationController.any_instance.stubs(:current_user).returns(user)
     visit dashboard_path
-    click_on "View Profile Info"
+    click_on "My Account"
 
     expect(page).to have_content("example@example.com")
 
@@ -25,7 +25,7 @@ describe 'Registered user' do
     user = create :user
     ApplicationController.any_instance.stubs(:current_user).returns(user)
     visit dashboard_path
-    click_on "View Profile Info"
+    click_on "My Account"
 
     click_on "Edit Profile"
     expect(current_path).to eq(edit_user_path(user))
@@ -44,9 +44,9 @@ describe 'Registered user' do
     user = create :user
     ApplicationController.any_instance.stubs(:current_user).returns(user)
     visit dashboard_path
-    click_on "View Profile Info"
+    click_on "My Account"
 
-    expect(page).to have_content("Users Name")
+    expect(page).to have_content("Account Name")
 
     click_on "Edit Profile"
     expect(current_path).to eq(edit_user_path(user))

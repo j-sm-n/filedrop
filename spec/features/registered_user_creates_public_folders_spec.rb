@@ -8,10 +8,10 @@ describe 'Registered User' do
     # When I visit the dashboard page
     expect(current_path).to eq(dashboard_path)
     # And I click on Create Folder
-    click_on 'Create Folder'
+    click_on 'Create a Folder'
     # I should see a form to create a Folder.
     expect(page).to have_content('Folder name')
-    expect(page).to have_content('Parent folder')
+    expect(page).to have_content('Parent Folder')
     expect(page).to have_content('Unrestricted')
     expect(page).to have_content('Restricted')
   end
@@ -25,7 +25,7 @@ describe 'Registered User' do
 
     login(user)
     #When I click on Create Folder
-    click_on 'Create Folder'
+    click_on 'Create a Folder'
     # And I fill in the folder name
     fill_in 'Folder name', with: 'Artwork'
     # And I choose the parent folder

@@ -1,0 +1,11 @@
+<div class="container">
+  <h3 class="root_folder"><%= @root_folder.name %></h3>
+  <% @folders.each do |folder| %>
+    <h4 class="user_folder"> <%= folder.name %></h4>
+      <ul class="user_folder_files">
+        <% folder.documents.each do |document| %>
+          <li class="user_folder_file"> <%= document.filename %> </li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>
