@@ -5,7 +5,8 @@ describe "Comments CRUD API" do
     user = create(:user)
     folder = create(:folder, user: user)
     document = create(:document, folder: folder, user: user)
-    
+    post "/api/v1/comments/new?api_key"
+
     raw_comment = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_success

@@ -2,6 +2,11 @@ class Document < ApplicationRecord
   belongs_to :user
   has_many :comments
 
+  alias_attribute :parent, :folder 
+
+  have_one :container, dependant: :destroy
+  have_one :folder, through: :container
+
   def set_parent(parent_folder_id)
     if parent_folder_id
       parent = Folder.find(parent_folder_id)
