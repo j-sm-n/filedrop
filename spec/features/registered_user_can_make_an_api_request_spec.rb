@@ -80,11 +80,9 @@ RSpec.describe 'Registered user' do
 
     expect(current_path).to eq('/api_request')
 
-    fill_in 'Application Name', with: ''
-    click_on 'Generate API Key'
-
+    click_on "Generate New API"
     expect(current_path).to eq('/api_request')
-    expect(page).to have_content('Please try again, API key was not generated.')
-    expect(page).to_not have_content('Generate New API')
+    expect(page).to have_content("An email with your new api key has been sent.")
+    expect(page).to_not have_content('12345')
   end
 end
