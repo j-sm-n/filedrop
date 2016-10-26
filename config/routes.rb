@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/users/verify', to: 'verification#create'
   post '/users/resend'
   post '/notification', to: 'notification#create'
+  put '/notification', to: 'notification#update'
   get '/api_request', to: 'external_application#index'
 
   namespace :admin do

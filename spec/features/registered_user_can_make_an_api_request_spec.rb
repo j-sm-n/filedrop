@@ -49,4 +49,42 @@ RSpec.describe 'Registered user' do
     expect(page).to have_content('An email with your new api key has been sent.')
     expect(page).to have_content('Generate New API')
   end
+
+  it 'it does not let user generate an api without a name' do
+    user = create :user
+    login(user)
+
+    visit user_path(user)
+
+    click_on 'API Keys'
+
+    expect(current_path).to eq('/api_request')
+
+    fill_in 'Application Name', with: ''
+    click_on 'Generate API Key'
+
+    expect(current_path).to eq('/api_request')
+    expect(page).to have_content('Please try again, API key was not generated.')
+    expect(page).to_not have_content('Generate New API')
+  end
+
+  it 'it can generate a new api key for an existing application' do
+    user = create :user
+    login(user)
+    create :external_application, name: 'Api Curious', user_id: user.id, api_key: '12345'
+
+    visit user_path(user)
+
+
+    click_on 'API Keys'
+
+    expect(current_path).to eq('/api_request')
+
+    fill_in 'Application Name', with: ''
+    click_on 'Generate API Key'
+
+    expect(current_path).to eq('/api_request')
+    expect(page).to have_content('Please try again, API key was not generated.')
+    expect(page).to_not have_content('Generate New API')
+  end
 end
