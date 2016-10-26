@@ -28,8 +28,10 @@ class Folder < ApplicationRecord
   end
 
   def accessible?(visitor)
-    if user.active?
+    if user.active? && visitor
       unrestricted? || authorized_users.include?(visitor) || visitor.admin? || visitor == user
+    elsif user.active?
+      unrestricted?
     else
       return false
     end
