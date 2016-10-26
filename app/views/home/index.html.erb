@@ -1,5 +1,24 @@
-<div>
-  <%= link_to "Create Account", new_user_path, class: "button" %>
-  <%= link_to "Login", login_path, class: "button" %>
-  <%= link_to "Public Files", folders_path, class: "button" %>
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="home-container">
+      <div class="row home-links-container">
+        <div class="col-md-10 home-links">
+          <%= link_to "Create Account", new_user_path, class: "button" %>
+        </div>
+      </div>
+      <div class="row home-links-container">
+        <div class="col-md-10 home-links">
+          <%= link_to "Public Files", folders_path, class: "button" %>
+        </div>
+      </div>
+      <div class="row home-links-container">
+        <div class="col-md-10 home-links">
+          <p>
+            <%= link_to "Login", login_path, class: "button" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

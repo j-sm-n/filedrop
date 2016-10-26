@@ -15,8 +15,17 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    clear_tempfolder
     session.clear
     redirect_to root_path
   end
 
+  private
+    def clear_tempfolder
+      if session[:downloaded_files]
+        session[:downloaded_files].each do |file|
+          File.delete(file)
+        end
+      end
+    end
 end

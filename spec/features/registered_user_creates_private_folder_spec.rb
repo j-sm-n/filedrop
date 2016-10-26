@@ -10,11 +10,11 @@ describe 'Registered User' do
     # When I visit the dashboard page
     visit dashboard_path
     # and I click on Create Folder
-    click_on 'Create Folder'
+    click_on 'Create a Folder'
     # and I fill in the form
     fill_in 'Folder name', with: 'Students'
     # And I choose the parent folder
-    select folder.name, from: 'folder[id]'
+    select folder.name, from: 'folder[parent]'
     # and I choose the permission level "Private"
     find(:css, '#folder_permission_level_restricted').set(true)
     # and I click Create Folder

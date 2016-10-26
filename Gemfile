@@ -30,6 +30,7 @@ gem 'unicorn'
 gem 'aws-sdk-v1'
 gem 'aws-sdk', '~> 2'
 gem 'turbolinks'
+gem 'rubyzip'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -51,6 +52,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'mocha'
   gem 'turbolinks'
+  gem 'aws-sdk', '~> 2'
+  gem 'faker'
 end
 
 group :development do

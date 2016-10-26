@@ -6,7 +6,7 @@ class Users::FoldersController < ApplicationController
   def create
     @folder = current_user.folders.new(folder_params)
     if @folder.save
-      flash[:success] = @folder.set_parent(parent_folder[:id])
+      flash[:success] = @folder.set_parent(parent_folder[:parent])
       redirect_to dashboard_path
     else
       flash.now[:error] = @folder.errors.full_messages.join('. ')
@@ -26,6 +26,6 @@ class Users::FoldersController < ApplicationController
     end
 
     def parent_folder
-      params.require(:folder).permit(:id)
+      params.require(:folder).permit(:parent)
     end
 end

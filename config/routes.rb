@@ -12,9 +12,10 @@ Rails.application.routes.draw do
     resources :users, only:[:index, :update]
   end
 
+
   resources :documents, only:[:index]
   resources :users, only:[:new, :create, :edit, :update, :show] do
-    resources :documents
+    resources :documents, only:[:new, :create]
     scope module: 'users' do
       resources :folders, only:[:new, :create, :index]
     end
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :folders, only:[:index, :show]
+  resources :downloads, only:[:create]
 
   get '/dashboard', to: 'dashboard#index'
   get "/login", to: "sessions#new"
