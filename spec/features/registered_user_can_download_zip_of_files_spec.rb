@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Registered User" do
-  xit "can upload files" do
+  xit "can download files" do
     # As a Registered User,
     user      = create(:user)
     folder    = Folder.create(name: "Novel", user_id: user.id, permission_level: 0)

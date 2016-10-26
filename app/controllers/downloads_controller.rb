@@ -23,11 +23,12 @@ class DownloadsController < ApplicationController
       end
     end
     send_file zipfile_name
-    if session[:downloaded_files]
-      session[:downloaded_files] << zipfile_name
-    else
-      session[:downloaded_files] = [zipfile_name]
-    end
+    record_file_sent
+    # if session[:downloaded_files]
+    #   session[:downloaded_files] << zipfile_name
+    # else
+    #   session[:downloaded_files] = [zipfile_name]
+    # end
   end
 
   private
@@ -58,4 +59,11 @@ class DownloadsController < ApplicationController
     return files.flatten
   end
 
+  def record_file_sent
+    if session[:downloaded_files]
+      session[:downloaded_files] << zipfile_name
+    else
+      session[:downloaded_files] = [zipfile_name]
+    end
+  end
 end

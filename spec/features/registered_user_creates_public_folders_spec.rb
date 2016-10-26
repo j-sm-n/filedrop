@@ -29,7 +29,7 @@ describe 'Registered User' do
     # And I fill in the folder name
     fill_in 'Folder name', with: 'Artwork'
     # And I choose the parent folder
-    select folder.name, from: 'folder[id]'
+    select folder.name, from: 'folder[parent]'
     # And I choose the folder's permission level
     find(:css, '#folder_permission_level_unrestricted').set(true)
     # And I click submit

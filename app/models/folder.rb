@@ -23,9 +23,8 @@ class Folder < ApplicationRecord
     end
   end
 
-  def parent #the id of folder selected in dropdown
-    #Folder.joins(:containers).where("containers.containable_id = 2 and containers.containable_type = 'Folder'")
-    Folder.joins(:containers).where("containers.containable_id = ? and containers.containable_type = ?", "#{self.id}", 'Folder')
+  def parent
+    Folder.joins(:containers).where("containers.containable_id = ? and containers.containable_type = ?", "#{self.id}", 'Folder').first
   end
 
   def accessible?(visitor)

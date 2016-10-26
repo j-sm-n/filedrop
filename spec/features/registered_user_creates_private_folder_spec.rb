@@ -14,7 +14,7 @@ describe 'Registered User' do
     # and I fill in the form
     fill_in 'Folder name', with: 'Students'
     # And I choose the parent folder
-    select folder.name, from: 'folder[id]'
+    select folder.name, from: 'folder[parent]'
     # and I choose the permission level "Private"
     find(:css, '#folder_permission_level_restricted').set(true)
     # and I click Create Folder

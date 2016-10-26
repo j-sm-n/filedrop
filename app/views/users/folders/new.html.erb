@@ -2,7 +2,7 @@
   <%= f.label :name, 'Folder name' %>
   <%= f.text_field :name %>
   <%= f.label 'Parent Folder' %>
-  <%= f.collection_select(:id, current_user.folders, :id, :name, prompt: false) %>
+  <%= select_tag "folder[parent]", options_from_collection_for_select(current_user.folders, "id", "name"), prompt: false %>
   <%= f.radio_button :permission_level, 'unrestricted', checked: true %>
   <%= label :permission_level_unrestricted, 'Unrestricted' %>
   <%= f.radio_button :permission_level, 'restricted'%>
