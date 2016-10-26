@@ -21,7 +21,7 @@ describe 'Registered user' do
     #Then I should see the individual folder's show page
     expect(current_path).to eq(folder_path(folder.id))
     #and I should see the updated folder name
-    expect(page).to have_content('BobbleHead Collection')
+    expect(page).to have_content('Bobblehead Collection')
     #and I should not see the folder's old name
     expect(page).to have_no_content('Novel')
   end
