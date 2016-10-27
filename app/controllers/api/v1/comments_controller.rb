@@ -25,6 +25,17 @@ class Api::V1::CommentsController < ApplicationController
     end
   end
 
+  def show
+    document = Document.find_by(id: params[:document_id])
+
+    if document
+      @cs = CommentShow.new(document, params[:id])
+      render json: @cs
+    else
+      render json: { "error": "Required params are invalid" }, status: 404
+    end
+  end
+
   private
 
   def api_key_valid?
