@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   root "home#index"
 
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      resources :comments, only: [:create]
+    end
+  end
+
   get '/users/verify', to: 'verification#new', as: 'verify'
   post '/users/verify', to: 'verification#create'
   post '/users/resend'
@@ -17,6 +23,7 @@ Rails.application.routes.draw do
 
 
   resources :documents, only:[:index] #TODO move this?
+
   resources :users, only:[:new, :create, :edit, :update, :show] do
     resources :documents, only:[:new, :create, :show]
     scope module: 'users' do
@@ -25,7 +32,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :destroy, :edit, :update]
   end
 
-  resources :folders, only:[:index, :show]
+  resources :folders, only:[:index, :show, :update]
   resources :downloads, only:[:create]
 
   get '/dashboard', to: 'dashboard#index'
