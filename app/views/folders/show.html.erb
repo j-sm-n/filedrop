@@ -15,7 +15,7 @@
     <%= form_for(:download, url: downloads_path) do |f| %>
       <% @documents.each do |document| %>
       <tr>
-      <td><%= link_to document.filename, document.url %></td>
+      <td><%= link_to document.filename, user_document_path(current_user.id, document.id) %></td>
         <td><%= f.check_box(document.id)%>
         <%= f.label "Download?" %></td>
       </tr>
