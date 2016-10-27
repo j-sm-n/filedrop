@@ -68,7 +68,7 @@ RSpec.describe 'Registered user' do
     expect(page).to_not have_content('Generate Key')
   end
 
-  it 'it can generate a new api key for an existing application' do
+  xit 'it can generate a new api key for an existing application' do
     user = create :user
     login(user)
     create :external_application, name: 'Api Curious', user_id: user.id, api_key: '12345'
