@@ -42,9 +42,6 @@ class User < ApplicationRecord
     end
   end
 
-  # def api_key(external_application_id)
-  #   external_applications.where('id' => external_application_id).first.api_key
-  # end
   private
     def root_folder
       folders.create(name: "#{name}'s Stuff")
