@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :document do
-    filename "screenshot.png"
-    content_type "MyString"
-    url "https://filedrop-bucket.s3-us-west-1.amazonaws.com/screenshot.png"
+    filename Faker::File.file_name
+    content_type Faker::Lorem.paragraph
+    url Faker::File.file_name('path/to')
     user
   end
 end

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :folder do
-    name "Valuables"
+    name Faker::File.file_name
     user
   end
 end

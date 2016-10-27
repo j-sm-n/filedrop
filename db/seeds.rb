@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+  2.times do
+    user = User.create( name: Faker::Name.name,
+                        email: Faker::Internet.email,
+                        role: 0
+                        sms_number: Faker::PhoneNumber.cell_phone,
+                        password_digest:  )
+    2.times do
+      folder = create :folder, user: user
+    end
+  end
