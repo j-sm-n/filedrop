@@ -12,8 +12,8 @@ describe 'Registered User' do
     # I should see a form to create a Folder.
     expect(page).to have_content('Folder name')
     expect(page).to have_content('Parent Folder')
-    expect(page).to have_content('Unrestricted')
-    expect(page).to have_content('Restricted')
+    expect(page).to have_content('Public')
+    expect(page).to have_content('Private')
   end
 
   it 'can create a public folder' do
