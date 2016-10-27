@@ -49,7 +49,7 @@ FileDrop API</span>
         user_id: The user who made the comment
         comment_id: The comment you would like to see
     Response:
-        message: Array of all the comments associated with the document
+        message: A comment
 
     **POST /?api_key[API-KEY]&document_id=[DOCUMENT_ID]&user_id=[USER_ID]&content=[CONTENT]**
 
