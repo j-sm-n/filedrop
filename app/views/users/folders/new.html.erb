@@ -17,13 +17,13 @@
                 <div class="form-check">
                   <label class="form-check-label">
                     <%= f.radio_button :permission_level, 'unrestricted', checked: true, class: 'form-check-input' %>
-                    <%= label :permission_level_unrestricted, 'Unrestricted' %>
+                    <%= label :permission_level_unrestricted, 'Public' %>
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
                     <%= f.radio_button :permission_level, 'restricted', class: 'form-check-input' %>
-                    <%= label :permission_level_restricted, 'Restricted' %>
+                    <%= label :permission_level_restricted, 'Private' %>
                   </label>
                 </div>
               </div>
