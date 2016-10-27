@@ -20,4 +20,9 @@ describe "Comments CRUD API" do
     expect(raw_comment[:count]).to eq(1)
     expect(Comment.last.content).to eq("Yippee!")
   end
+  context "bad api key" do
+    it "has a useful error message" do
+      expect(reponse).to be_
+    end
+  end
 end
