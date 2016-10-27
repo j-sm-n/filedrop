@@ -23,10 +23,6 @@ class Document < ApplicationRecord
     end
   end
 
-  # def parent
-  #   Folder.joins(:containers).where("containers.containable_id = ? and containers.containable_type = ?", "#{self.id}", 'Document').first
-  # end
-
   def amazon_path
     "#{parent.user_id}/#{parent.id}"
   end
