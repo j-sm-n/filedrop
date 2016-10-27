@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Registered user' do
   it 'can update email' do
-    user = create :user
+    user = create :user, email: "example@example.com"
     ApplicationController.any_instance.stubs(:current_user).returns(user)
     visit dashboard_path
     click_on "My Account"
