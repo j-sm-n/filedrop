@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
 
   resources :documents, only:[:index] #TODO move this?
+
   resources :users, only:[:new, :create, :edit, :update, :show] do
     resources :documents, only:[:new, :create, :show]
     scope module: 'users' do
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :destroy, :edit, :update]
   end
 
-  resources :folders, only:[:index, :show]
+  resources :folders, only:[:index, :show, :update]
   resources :downloads, only:[:create]
 
   get '/dashboard', to: 'dashboard#index'

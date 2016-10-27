@@ -7,8 +7,8 @@ class User < ApplicationRecord
   validates :email,  presence: true, format: { with: /\A.+@.+$\Z/ }, uniqueness: true
   validates :name, presence: true
   validates :sms_number, presence: true
-  validates :password, presence: true
-  validates :password_confirmation, presence: true
+  # validates :password, presence: true
+  # validates :password_confirmation, presence: true
 
   has_many :folders, dependent: :destroy
   has_many :folder_permissions

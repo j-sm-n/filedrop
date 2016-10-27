@@ -1,6 +1,11 @@
 <div class="container">
   <h1><%= @folder.name %></h1>
   <%= link_to "Edit Folder", edit_user_folder_path(current_user.id, @folder.id) %>
+  <%= form_for @folder do |f| %>
+    <%= f.label 'Email: ' %>
+    <%= f.text_field :folder_permissions %>
+    <%= f.submit 'Grant Access' %>
+  <% end %>
   <ul>
     <%= form_for(:download, url: downloads_path) do |f| %>
       <% @documents.each do |document| %>

@@ -12,7 +12,6 @@ RSpec.describe Folder, type: :model do
     user = create :user
     root = user.folders.first
     root.documents.create(filename: 'test', user: user)
-byebug
     expect { root.destroy }.to change { Document.count }.by(-1)
   end
 end
