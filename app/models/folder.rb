@@ -7,10 +7,11 @@ class Folder < ApplicationRecord
   has_many :documents, through: :containers, source: :containable, source_type: 'Document', dependent: :destroy
 
   alias_attribute :authorized_users, :users
-  has_many :folder_permissions, dependent: :destroy
+  has_many :folder_permissions
   has_many :users, through: :folder_permissions
 
-  has_one :container, as: :containable, dependent: :destroy
+  alias_attribute :parent, :folder
+  has_one :container, as: :containable
   has_one :folder, through: :container
 
   enum permission_level: %w(restricted unrestricted)
@@ -23,10 +24,6 @@ class Folder < ApplicationRecord
     else
       "#{name} was added"
     end
-  end
-
-  def parent
-    Folder.joins(:containers).where("containers.containable_id = ? and containers.containable_type = ?", "#{self.id}", 'Folder').first
   end
 
   def accessible?(visitor)

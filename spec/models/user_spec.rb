@@ -34,4 +34,11 @@ describe User, type: :model do
     root.subfolders.create(name: 'Test', user: user)
     expect { user.destroy }.to change { Folder.count }.by(-2)
   end
+
+  it 'takes out docuemtns' do
+    user = create :user
+    root = user.folders.first
+    root.subfolders.create(name: 'Test', user: user)
+    expect { user.destroy }.to change { Document.count }.by(-1)
+  end
 end
