@@ -24,7 +24,7 @@ FileDrop API</span>
   * Description: *This API allows you to create, read, update, and delete comments on FileDrop documents.*
 
     **Find source code of this API** [here](https://github.com/tgisg/filedrop)
-  * Host: filedrop-v1.herokuapp.com/
+  * Host: filedrop-v1.herokuapp.com
   * Base Path: /api/v1/comments
       * schemes:
           - http
