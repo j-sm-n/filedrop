@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
     name Faker::Name.name
-    email "example@example.com"
+    email Faker::Internet.email
     role 0
     sms_number ENV['TEST_PHONE_NUMBER']
     password "MyString"
