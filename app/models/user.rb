@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
 
   has_many :folders, dependent: :destroy
-  has_many :folder_permissions, dependent: :destroy
+  has_many :folder_permissions
 
   enum status: { active: 0, deactivated: 1 }
   enum role: { user: 0, admin: 1 }

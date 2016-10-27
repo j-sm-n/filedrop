@@ -1,10 +1,12 @@
 class Document < ApplicationRecord
   before_destroy :remove_from_storage
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
-  has_one :container, as: :containable, dependent: :destroy
-  has_one :folder, through: :container
+  has_one :container, as: :containable
+  has_one :folder, through: :container, dependent: :destroy
+  alias_attribute :parent, :folder
+
 
   def set_parent(parent_folder_id)
     if parent_folder_id
@@ -16,16 +18,16 @@ class Document < ApplicationRecord
     end
   end
 
-  def parent
-    Folder.joins(:containers).where("containers.containable_id = ? and containers.containable_type = ?", "#{self.id}", 'Document').first
-  end
+  # def parent
+  #   Folder.joins(:containers).where("containers.containable_id = ? and containers.containable_type = ?", "#{self.id}", 'Document').first
+  # end
 
   def amazon_path
     "#{parent.user_id}/#{parent.id}"
   end
 
   def remove_from_storage
-    bucket = ENV['S3_BUCKET']
-    bucket.object(amazon_path+"/#{filename}").delete
+  #   bucket = ENV['S3_BUCKET']
+  #   bucket.object(amazon_path+"/#{filename}").delete
   end
 end

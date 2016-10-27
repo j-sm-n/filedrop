@@ -3,8 +3,16 @@ class Folder < ApplicationRecord
   scope :unrestricted_folders, -> { where(permission_level: 'unrestricted') }
 
   has_many :containers, dependent: :destroy
-  has_many :subfolders, through: :containers, source: :containable, source_type: 'Folder', dependent: :destroy
-  has_many :documents, through: :containers, source: :containable, source_type: 'Document', dependent: :destroy
+  has_many :subfolders,
+            through: :containers,
+            source: :containable,
+            source_type: 'Folder',
+            dependent: :destroy
+  has_many :documents,
+            through: :containers,
+            source: :containable,
+            source_type: 'Document',
+            dependent: :destroy
 
   alias_attribute :authorized_users, :users
   has_many :folder_permissions
