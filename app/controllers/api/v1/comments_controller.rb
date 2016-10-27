@@ -25,6 +25,42 @@ class Api::V1::CommentsController < ApplicationController
     end
   end
 
+  def show
+    document = Document.find_by(id: params[:document_id])
+
+    if document
+      @cs = CommentShow.new(document, params[:id])
+      render json: @cs
+    else
+      render json: { "error": "Required params are invalid" }, status: 404
+    end
+  end
+
+  def update
+    comment = Comment.find_by(id: params[:id])
+
+    if comment
+      comment.update_attributes(content: params[:comment])
+      @cu = CommentUpdate.new(comment.id)
+
+      render json: @cu
+    else
+      render json: { "error": "Required params are invalid" }, status: 404
+    end
+  end
+
+  def destroy
+    comment = Comment.find_by(id: params[:id])
+
+    if comment
+      comment.destroy
+
+      render json: { "message": "Comment of id #{comment.id} has been deleted" }
+    else
+      render json: { "error": "Could not find comment with request id" }, status: 404
+    end
+  end
+
   private
 
   def api_key_valid?
