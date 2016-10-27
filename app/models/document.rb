@@ -8,6 +8,11 @@ class Document < ApplicationRecord
   alias_attribute :parent, :folder
 
 
+  alias_attribute :parent, :folder
+
+  has_one :container, as: :containable, dependent: :destroy
+  has_one :folder, through: :container
+
   def set_parent(parent_folder_id)
     if parent_folder_id
       parent = Folder.find(parent_folder_id)

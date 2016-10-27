@@ -2,9 +2,19 @@ Rails.application.routes.draw do
 
   root "home#index"
 
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      resources :comments, only: [:create]
+    end
+  end
+
   get '/users/verify', to: 'verification#new', as: 'verify'
   post '/users/verify', to: 'verification#create'
   post '/users/resend'
+  post '/notification', to: 'notification#create'
+  put '/notification', to: 'notification#update'
+  delete '/notification', to: 'notification#destroy'
+  get '/api_request', to: 'external_application#index'
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
