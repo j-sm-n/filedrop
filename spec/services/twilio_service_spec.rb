@@ -4,7 +4,7 @@ describe "Twilio Service" do
 
   it 'enables two factor authentication for a user' do
     VCR.use_cassette("twilio_service#get_authy_user") do
-      user = create :user, sms_number: ENV['TEST_PHONE_NUMBER']
+      user = create :user, sms_number: ENV['TEST_PHONE_NUMBER'], email: "example@example.com"
       service = TwilioService.new(user)
       response = service.get_authy_user
       expect(response[:success]).to eq(true)
@@ -32,9 +32,9 @@ describe "Twilio Service" do
       )
       service = TwilioService.new(user)
       service.generate_code
- 
+
       response = service.verify(ENV['AUTHY_TOKEN'])
- 
+
       expect(response[:success]).to eq(true)
     end
   end

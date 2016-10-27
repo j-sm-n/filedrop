@@ -53,4 +53,47 @@ describe "Comments CRUD API" do
       expect(raw_resp[:error]).to eq("Required params are invalid")
     end
   end
+
+  it "shows all comments" do
+    user        = create(:user)
+    folder      = create(:folder, user: user)
+    document    = create(:document, folder: folder, user: user)
+    comment_1   = create(:comment, content: "This is comment 1", user: user, document: document, created_at: "12/20/2009 00:00")
+    comment_2   = create(:comment, content: "This is comment 2", user: user, document: document, created_at: "12/20/2011 00:00")
+    comment_3   = create(:comment, content: "This is comment 3", user: user, document: document, created_at: "12/20/2012 00:00")
+    application = create(:external_application, user: user)
+
+    get "/api/v1/comments?api_key=7&document_id=#{document.id}"
+
+    raw_resp = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_success
+    expect(raw_resp[:document_id]).to eq(document.id)
+    expect(raw_resp[:count]).to eq(3)
+    expect(raw_resp[:comments].class).to eq(Array)
+
+    expect(raw_resp[:comments][0][:comment][:content]).to eq("This is comment 1")
+    expect(raw_resp[:comments][0][:comment][:user_id]).to eq(user.id)
+    expect(raw_resp[:comments][0][:comment][:comment_id]).to eq(comment_1.id)
+
+    expect(raw_resp[:comments][2][:comment][:content]).to eq("This is comment 3")
+    expect(raw_resp[:comments][2][:comment][:comment_id]).to eq(comment_3.id)
+  end
+
+  context "Missing required params" do
+    it "is missing document id for get index" do
+      user        = create(:user)
+      folder      = create(:folder, user: user)
+      document    = create(:document, folder: folder, user: user)
+      create(:comment, content: "This is comment 1", user: user, document: document, created_at: "12/20/2009 00:00")
+      application = create(:external_application, user: user)
+
+      get "/api/v1/comments?api_key=7&document_id="
+
+      raw_resp = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(404)
+      expect(raw_resp[:error]).to eq("Required params are invalid")
+    end
+  end
 end
