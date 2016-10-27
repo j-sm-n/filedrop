@@ -42,9 +42,6 @@ class User < ApplicationRecord
     end
   end
 
-  def api_key
-    
-  end
   private
     def root_folder
       folders.create(name: "#{name}'s Stuff")

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API, type: :model do
+describe ApiKey, type: :model do
   it 'Generates a uniq api key' do
     api_key = ApiKey.generate_new_api
 

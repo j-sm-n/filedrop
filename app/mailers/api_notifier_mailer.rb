@@ -1,6 +1,6 @@
 class ApiNotifierMailer < ApplicationMailer
-  def send_api(user, applicant)
-    @user = user
-    mail(to: applicant, subject: "Your requested credentials from FileDrop.")
+  def send_api(application, applicant_email)
+    @application = application
+    mail(to: applicant_email, subject: "Your requested credentials from FileDrop.")
   end
 end

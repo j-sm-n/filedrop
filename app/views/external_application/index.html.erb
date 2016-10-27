@@ -8,16 +8,18 @@
   </div>
 </div>
 
-<% @applications.each do |application| %>
-  <div class="row">
-    <div class="col_md_4">
-      Application Name: <%= application.name %>
-    </div>
-    <div class="col-md-4">
-      API Key: <%= application.api_key %>
-    </div>
-    <div class="col-md-4">
-      <%= link_to "Generate New API", notification_path(name: application.name), method: :put %>
-    </div>
+  <div class="col-md-8 col-md-offset-2">
+    <% @applications.each do |application| %>
+      <div class="row">
+        <div class="col-md-3">
+          Application Name: <%= application.name %>
+        </div>
+        <div class="col-md-5">
+          API Key: <%= application.api_key %>
+        </div>
+        <div class="col-md-4">
+          <%= link_to "Generate Key", notification_path(id: application.id), method: :put %> | <%= link_to "Delete Key", notification_path(id: application.id), method: :delete %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>

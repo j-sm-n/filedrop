@@ -6,7 +6,7 @@ class NotificationController < ApplicationController
                             user_id: current_user.id,
                             api_key: api_key)
     if @application.save
-      ApiNotifierMailer.send_api(current_user, current_user.email).deliver_now
+      ApiNotifierMailer.send_api(@application, current_user.email).deliver_now
       flash[:success] = "An email with your new api key has been sent."
       redirect_to api_request_path
     else
@@ -16,11 +16,10 @@ class NotificationController < ApplicationController
   end
 
   def update
-    byebug
     api_key = ApiKey.generate_new_api
-    @application = ExternalApplication.find_by(user_id: current_user.id, name: ext_app_name)
-    if @application.update_attribute(api_key: api_key)
-      ApiNotifierMailer.send_api(current_user, current_user.email).deliver_now
+    @application = ExternalApplication.find(ext_app_id[:id])
+    if @application.update_attribute(:api_key, api_key)
+      ApiNotifierMailer.send_api(@application, current_user.email).deliver_now
       flash[:success] = "An email with your new api key has been sent."
       redirect_to api_request_path
     else
@@ -29,12 +28,19 @@ class NotificationController < ApplicationController
     end
   end
 
+  def destroy
+    @application = current_user.external_applications.find(ext_app_id[:id])
+    @application.destroy
+    flash[:success] = "Your key has been deleted!"
+    redirect_to api_request_path
+  end
+
   private
     def ext_app_params
       params.require(:notification).permit(:name)
     end
 
-    def ext_app_name
-      params.permit(:name)
+    def ext_app_id
+      params.permit(:id)
     end
 end
