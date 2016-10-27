@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
-      resources :comments, only: [:create, :index, :show]
+      resources :comments, only: [:create, :index, :show, :update]
     end
   end
 
