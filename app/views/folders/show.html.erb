@@ -1,23 +1,30 @@
 <div class="container">
   <h1><%= @folder.name %></h1>
   <%= link_to "Edit Folder", edit_user_folder_path(current_user.id, @folder.id) %>
+<div>
+  <h4>Share this folder with another user.</h4>
   <%= form_for @folder do |f| %>
     <%= f.label 'Email: ' %>
-    <%= f.text_field :folder_permissions %>
+    <%= f.text_field :folder_permissions, value: 'example@example.com' %>
     <%= f.submit 'Grant Access' %>
   <% end %>
-  <ul>
+</div>
+<div>
+  <table>
+    <tr><th>Documents in this folder</th></tr>
     <%= form_for(:download, url: downloads_path) do |f| %>
       <% @documents.each do |document| %>
-      <%= link_to document.filename, document.url %><br>
-        <%= f.check_box(document.id)%>
-        <%= f.label "Download?" %><br>
+      <tr>
+      <td><%= link_to document.filename, document.url %></td>
+        <td><%= f.check_box(document.id)%>
+        <%= f.label "Download?" %></td>
+      </tr>
       <% end %>
-      <%= f.submit "Download Selected Files" %>
+      <tr><td><%= f.submit "Download Selected Files" %></td></tr>
     <% end %>
-  </ul>
+  </table>
 </div>
 
 <% if current_user %>
-  <%= link_to "Upload File", new_user_document_path(current_user.id) %>
+  <%= link_to "Upload File", new_user_document_path(current_user.id), class: 'btn' %>
 <% end %>
