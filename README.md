@@ -39,17 +39,14 @@ FileDrop API</span>
 
     Parameters:
         document_id: The document for which you would like to see comments
-    Response:
-        message: Array of all the comments associated with the document
+    Response: Array of all the comments associated with the document
 
     **GET /comment_id[COMMENT_ID]?api_key[API-KEY]&document_id=[DOCUMENT_ID]**
 
     Parameters:
         document_id: The document which contains the comment you would like to see
-        user_id: The user who made the comment
         comment_id: The comment you would like to see
-    Response:
-        message: A comment
+    Response: A comment
 
     **POST /?api_key[API-KEY]&document_id=[DOCUMENT_ID]&user_id=[USER_ID]&content=[CONTENT]**
 
@@ -60,22 +57,16 @@ FileDrop API</span>
       Response:
         message: "A comment was created!"
 
-    **PUT /comment_id=[COMMENT_ID]?api_key[API-KEY]&document_id=[DOCUMENT_ID]&content=[CONTENT]**
+    **PUT /comment_id=[COMMENT_ID]?api_key[API-KEY]&content=[CONTENT]**
 
       Parameters:
-        document_id: The document whose comment you're editing
-        user_id: The id of the user editing the comment
         comment_id: The comment being edited
         content: The content of the comment being edited
-      Response:
-        message: "The comment was edited!"
+      Response: The edited message
 
-    **DELETE /comment_id=[COMMENT_ID]?api_key[API-KEY]&document_id=[DOCUMENT_ID]**
+    **DELETE /comment_id=[COMMENT_ID]?api_key[API-KEY]**
 
       Parameters:
-        document_id: The document whose comment you're deleting
-        user_id: The id of the user deleting the comment
         comment_id: The comment being deleted
-        content: The content of the comment being edited
       Response:
-        message: "The comment was edited!"
+        message: "The comment was deleted!"

@@ -12,13 +12,13 @@ class DownloadsController < ApplicationController
     end
     files.each do |file|
       file_obj = bucket.object("#{file.amazon_path}/#{file.filename}")
-      file_obj.get(response_target: "tmp_dir/#{file.filename}")
+      file_obj.get(response_target: "tmp/tmp_dir/#{file.filename}")
     end
 
-    zipfile_name = "tmp_dir/#{Time.now}.zip"
+    zipfile_name = "tmp/tmp_dir/#{Time.now}.zip"
     Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
       files.each do |file|
-        zipfile.add(file.filename, "tmp_dir/#{file.filename}")
+        zipfile.add(file.filename, "tmp/tmp_dir/#{file.filename}")
       end
     end
     send_file zipfile_name
