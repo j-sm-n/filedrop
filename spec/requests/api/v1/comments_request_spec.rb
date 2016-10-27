@@ -116,7 +116,7 @@ describe "Comments CRUD API" do
     expect(raw_resp[:user_id]).to eq(user.id)
   end
 
-  it "upates the content of a single comment" do
+  it "updates the content of a single comment" do
     user        = create(:user)
     folder      = create(:folder, user: user)
     document    = create(:document, folder: folder, user: user)
@@ -125,7 +125,7 @@ describe "Comments CRUD API" do
                                    document: document)
     application = create(:external_application, user: user)
 
-    patch "/api/v1/comments/#{comment_1.id}?api_key=7&document_id=#{document.id}&comment=BOOM"
+    patch "/api/v1/comments/#{comment_1.id}?api_key=7&comment=BOOM"
 
     raw_resp = JSON.parse(response.body, symbolize_names: true)
 
@@ -133,5 +133,22 @@ describe "Comments CRUD API" do
     expect(raw_resp[:comment]).to eq("BOOM")
     expect(raw_resp[:user_id]).to eq(user.id)
     expect(raw_resp[:comment_id]).to eq(comment_1.id)
+  end
+
+  it "deletes a single comment" do
+    user        = create(:user)
+    folder      = create(:folder, user: user)
+    document    = create(:document, folder: folder, user: user)
+    comment_1   = create(:comment, content: "This is comment 1",
+                                   user: user,
+                                   document: document)
+    application = create(:external_application, user: user)
+
+    delete "/api/v1/comments/#{comment_1.id}?api_key=7"
+
+    raw_resp = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_success
+    expect(raw_resp[:message]).to eq("Comment of id #{comment_1.id} has been deleted")
   end
 end

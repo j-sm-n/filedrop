@@ -49,6 +49,18 @@ class Api::V1::CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    comment = Comment.find_by(id: params[:id])
+
+    if comment
+      comment.destroy
+
+      render json: { "message": "Comment of id #{comment.id} has been deleted" }
+    else
+      render json: { "error": "Could not find comment with request id" }, status: 404
+    end
+  end
+
   private
 
   def api_key_valid?
