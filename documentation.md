@@ -1,24 +1,5 @@
-# README
-
-* Ruby Version: 2.3.1
-
-* Rails Version: 5.0.0.1
-
-* To use:
-    * 1) git clone https://github.com/tgisg/filedrop
-    * 2) bundle install
-    * 3) rake db:create db:migrate (to create the database and schema)
-    * 4) testing: rspec
-
-CONTRIBUTORS:
-* [Bryan Goss](https://github.com/bcgoss)
-* [Sonia Gupta](https://github.com/tgisg)
-* [Jasmin Hudacsek](https://github.com/j-sm-n)
-* [Matt DesMarteau](https://github.com/MDes41)
-
-------------------------------------------------
-<span style="color:#ffff; font-family: 'Courier'; font-size: 3em;">
-FileDrop API</span>
+<span style="color:#ffff; font-family: 'Courier'; font-size: 4em;">
+FileDrop</span>
 
   * Version: 1.0.0
   * Description: *This API allows you to create, read, update, and delete comments on FileDrop documents.*
